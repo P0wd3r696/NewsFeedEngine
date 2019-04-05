@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NewsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="NewsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self"
+              xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="CountryId" />
@@ -123,18 +127,24 @@
             <End Role="NewsProvider" EntitySet="NewsProvider" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NewsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="NewsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="CountryId" />
           </Key>
           <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false"
+                    Nullable="false" />
           <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NewsProviders" Relationship="Self.FK_NewsProvider_Country" FromRole="Country" ToRole="NewsProvider" />
+          <NavigationProperty Name="NewsProviders" Relationship="Self.FK_NewsProvider_Country" FromRole="Country"
+                              ToRole="NewsProvider" />
         </EntityType>
         <EntityType Name="NewsArticle">
           <Key>
@@ -145,7 +155,8 @@
           <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ProviderId" Type="Int32" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsArticle_NewsProvider1" FromRole="NewsArticle" ToRole="NewsProvider" />
+          <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsArticle_NewsProvider1"
+                              FromRole="NewsArticle" ToRole="NewsProvider" />
           <Property Name="LinkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NewsCatergory">
@@ -155,7 +166,8 @@
           <Property Name="CatergoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ParentId" Type="Int32" />
-          <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsCatergory" ToRole="NewsFeed" />
+          <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsCatergory"
+                              ToRole="NewsFeed" />
         </EntityType>
         <EntityType Name="NewsFeed">
           <Key>
@@ -167,8 +179,10 @@
           <Property Name="Active" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="0" />
           <Property Name="CategoryId" Type="Int32" />
-          <NavigationProperty Name="NewsCatergory" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsFeed" ToRole="NewsCatergory" />
-          <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsFeed_NewsProvider" FromRole="NewsFeed" ToRole="NewsProvider" />
+          <NavigationProperty Name="NewsCatergory" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsFeed"
+                              ToRole="NewsCatergory" />
+          <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsFeed_NewsProvider" FromRole="NewsFeed"
+                              ToRole="NewsProvider" />
         </EntityType>
         <EntityType Name="NewsProvider">
           <Key>
@@ -178,9 +192,12 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CountryId" Type="Int32" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_NewsProvider_Country" FromRole="NewsProvider" ToRole="Country" />
-          <NavigationProperty Name="NewsArticles" Relationship="Self.FK_NewsArticle_NewsProvider1" FromRole="NewsProvider" ToRole="NewsArticle" />
-          <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsProvider" FromRole="NewsProvider" ToRole="NewsFeed" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_NewsProvider_Country" FromRole="NewsProvider"
+                              ToRole="Country" />
+          <NavigationProperty Name="NewsArticles" Relationship="Self.FK_NewsArticle_NewsProvider1"
+                              FromRole="NewsProvider" ToRole="NewsArticle" />
+          <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsProvider" FromRole="NewsProvider"
+                              ToRole="NewsFeed" />
         </EntityType>
         <Association Name="FK_NewsProvider_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
