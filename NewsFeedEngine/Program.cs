@@ -137,10 +137,10 @@ namespace NewsFeedEngine
             rssFeedData = xml.Descendants("item")
                 .Select(x => new NewsArticle()
                 {
-                    Title = (string)x.Element("title"),
-                    LinkUrl = (string)x.Element("link"),
-                    Summary = (string)x.Element("description"),
-                    Picture = (string)x.Element("image")?.Element("url"),
+                    Title = (string) x.Element("title"),
+                    LinkUrl = (string) x.Element("link"),
+                    Summary = (string) x.Element("description"),
+                    Picture = (string) x.Element("image")?.Element("url"),
                     ProviderId = 2
                 });
 
