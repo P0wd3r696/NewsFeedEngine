@@ -4,13 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml.Linq;
+using NewsFeedEngine.Utilities;
 
 namespace NewsFeedEngine.Models
 {
     public class RssHandler
     {
         private readonly NewsDBEntities _context = new NewsDBEntities();
-        public readonly PictureHandler _pictureHandler = new PictureHandler();
+        private readonly PictureHandler _pictureHandler = new PictureHandler();
         public void SaveToDb(IEnumerable<NewsArticle> rssFeed, string rssData)
         {
             foreach (var rss in rssFeed)
@@ -18,16 +19,22 @@ namespace NewsFeedEngine.Models
                 {
                     var text = EncodeText(rss.Title);
                     rss.Summary = EncodeText(rss.Summary);
-                    if (rss.Picture == null) rss.Picture = _pictureHandler.GetPictures(rssData, "item", "enclosure");
+                    if (rss.Picture == null) rss.Picture = _pictureHandler.GetPictures(rssData, StaticData.RssItem, StaticData.RssEnclosure);
                     var splittedRssTitle = text.Split('|');
                     if (splittedRssTitle.Length == 1)
                     {
+                        var splittedTitle = splittedRssTitle[0];
                         if (rss.Summary == string.Empty) continue;
                         try
                         {
-                            rss.Title = splittedRssTitle[0].Trim();
-                            _context.NewsArticles.Add(rss);
-                            _context.SaveChanges();
+                            if (_context.NewsArticles.Any(x=>x.Title != splittedTitle))
+                            {
+                                rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.LinkUrl.Contains(x.Name))?
+                                    .ProviderId;
+                                rss.Title = splittedRssTitle[0].Trim();
+                                _context.NewsArticles.Add(rss);
+                                _context.SaveChanges();
+                            }
                             Console.WriteLine($"Title: {rss.Title}");
                         }
                         catch (Exception e)
@@ -39,6 +46,8 @@ namespace NewsFeedEngine.Models
                     {
                         try
                         {
+                            rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.LinkUrl.Contains(x.Name))?
+                                .ProviderId;
                             rss.Title = splittedRssTitle[1].Trim();
                             _context.NewsArticles.Add(rss);
                             _context.SaveChanges();
@@ -59,18 +68,17 @@ namespace NewsFeedEngine.Models
             return Encoding.UTF8.GetString(bytes);
         }
 
-        public void GetRssFeed(string rssData, WebClient client)
+        public void GetRssFeed(string rssData)
         {
             var xml = XDocument.Parse(rssData);
-            IEnumerable<NewsArticle> rssFeedData;
-            rssFeedData = xml.Descendants("item")
+
+            var rssFeedData = xml.Descendants("item")
                 .Select(x => new NewsArticle
                 {
                     Title = (string)x.Element("title"),
                     LinkUrl = (string)x.Element("link"),
                     Summary = (string)x.Element("description"),
-                    Picture = (string)x.Element("image")?.Element("url"),
-                    ProviderId = 2
+                    Picture = (string)x.Element("image")?.Element("url")
                 });
             
             SaveToDb(rssFeedData, rssData);

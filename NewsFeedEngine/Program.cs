@@ -24,7 +24,7 @@ namespace NewsFeedEngine
         {
             if (rssData.Contains("<rss"))
                 return true;
-            else if (rssData.Contains("atom"))
+            else if (rssData.Contains("<atom"))
                 return false;
 
             return false;
@@ -43,11 +43,11 @@ namespace NewsFeedEngine
                     var isRssFeed = IsRssFeed(rssData);
                     if (isRssFeed)
                     {
-                        rssHandler.GetRssFeed(rssData, client);
+                        rssHandler.GetRssFeed(rssData);
                     }
                     else
                     {
-                        atomHandler.GetRssFeed(rssData, client);
+                        atomHandler.GetRssFeed(rssData);
                     }
                 }
             }

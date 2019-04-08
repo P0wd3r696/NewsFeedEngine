@@ -10,7 +10,8 @@ namespace NewsFeedEngine.Utilities
     {
         public static string RssItem = "item";
         public static string RssItemImage = "image";
-        public static string Rss = "item";
-        public static string RssChild = "image";
+        public static string RssEnclosure = "enclosure";
+        public static string AtomItem = "entry";
+        public static string AtomItemImage = "content";
     }
 }
