@@ -22,9 +22,9 @@ namespace NewsFeedEngine
 
         public static bool IsRssFeed(string rssData)
         {
-            if (rssData.Contains("<rss"))
+            if (rssData.Contains("<channel"))
                 return true;
-            else if (rssData.Contains("<atom"))
+            else if (rssData.Contains("<entry>"))
                 return false;
 
             return false;

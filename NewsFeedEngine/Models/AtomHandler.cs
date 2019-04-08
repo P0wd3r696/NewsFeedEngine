@@ -62,20 +62,39 @@ namespace NewsFeedEngine.Models
 
         public void GetRssFeed(string rssData)
         {
-            var xml = XDocument.Parse(rssData);
+            try
+            { rssData = EncodeText(rssData);
+                var x = ChangeTextToHtml(rssData);
+               
+                XDocument doc = XDocument.Load(x);
+                // Feed/Entry
+                var entries = from item in doc.Root.Elements().Where(i => i.Name.LocalName == "entry")
+                              select new NewsArticle
+                              {
+                                  //FeedType = FeedType.Atom,
+                                  Summary = item.Elements().First(i => i.Name.LocalName == "content").Value,
+                                  LinkUrl = item.Elements().First(i => i.Name.LocalName == "link").Attribute("href")?.Value,
+                                  Picture = item.Elements().First(i => i.Name.LocalName == "link").Element("img")?.Value,
+                                  //PublishDate = ParseDate(item.Elements().First(i => i.Name.LocalName == "published").Value),
 
-            var rssFeedData = xml.Descendants("entry")
-                .Select(x => new NewsArticle
-                {
-                    Title = (string)x.Element("title"),
-                    LinkUrl = (string)x.Element("link"),
-                    Summary = (string)x.Element("content"),
-                    Picture = (string)x.Element("image")?.Element("url"),
-                    ProviderId = 2
-                });
+                                  Title = item.Elements().First(i => i.Name.LocalName == "title").Value
+                              };
+                //return entries.ToList();
 
-            SaveToDb(rssFeedData, rssData);
-            Console.WriteLine("End!");
+                SaveToDb(entries, rssData);
+                Console.WriteLine("End!");
+            }
+            catch (Exception ex)
+            {
+                //return new List<NewsArticle>();
+                Console.WriteLine("An error has occured");
+            }
+        }
+
+        private string ChangeTextToHtml(string rssData)
+        {
+            var xml = WebUtility.HtmlDecode(rssData);
+            return xml;
         }
     }
 }
