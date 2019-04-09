@@ -19,7 +19,7 @@ namespace NewsFeedEngine.Models
                 {
                     var text = EncodeText(rss.Title);
                     rss.Summary = EncodeText(rss.Summary);
-                    if (rss.Picture == null) rss.Picture = _pictureHandler.GetPictures(rssData, StaticData.RssItem, StaticData.RssEnclosure);
+                    if (rss.Picture == null) rss.Picture = _pictureHandler.GetPictures(rssData, StaticData.RssItem, StaticData.RssEnclosure,rss);
                     var splittedRssTitle = text.Split('|');
                     if (splittedRssTitle.Length == 1)
                     {

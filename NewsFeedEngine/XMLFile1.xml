@@ -1,1 +1,595 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="https://martinfowler.com/feed.atom" rel="self"/>
+  <link href="https://martinfowler.com"/>
+  <id>https://martinfowler.com/feed.atom</id>
+  <title>Martin Fowler</title>
+  <subtitle>Master feed of news and updates from martinfowler.com</subtitle>
+  <author>
+    <name>Martin Fowler</name>
+    <email>fowler@acm.org</email>
+    <uri>https://martinfowler.com</uri>
+  </author>
+  <updated>2019-04-08T09:40:00-04:00</updated>
+  <entry>
+    <title>Passing execution context to domain probes</title>
+    <link href="https://martinfowler.com/articles/domain-oriented-observability.html#IncludingExecutionContext"/>
+    <updated>2019-04-08T09:40:00-04:00</updated>
+    <id>tag:martinfowler.com,2019-04-08:Passing-execution-context-to-domain-probes</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html#IncludingExecutionContext'&gt;&lt;img src = 'https://martinfowler.com/articles/domain-oriented-observability/twitter-card.png' width = '350'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Calls to instrumentation require various bits of execution context.
+      Pete extends his discussion of domain probes to show how factory functions
+      help simplify the data plumbing.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html#IncludingExecutionContext'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Testing Domain Probes</title>
+    <link href="https://martinfowler.com/articles/domain-oriented-observability.html#TestingObservability"/>
+    <updated>2019-04-03T12:23:00-04:00</updated>
+    <id>tag:martinfowler.com,2019-04-03:Testing-Domain-Probes</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html#TestingObservability'&gt;&lt;img src = 'https://martinfowler.com/articles/domain-oriented-observability/twitter-card.png' width = '350'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Now he's shown you the basic idea, Pete shows how
+      using domain probes makes it much easier to test observability behavior.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html#TestingObservability'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Domain-Oriented Observability</title>
+    <link href="https://martinfowler.com/articles/domain-oriented-observability.html"/>
+    <updated>2019-04-02T09:41:00-04:00</updated>
+    <id>tag:martinfowler.com,2019-04-02:Domain-Oriented-Observability</id>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html'&gt;&lt;img src = 'https://martinfowler.com/articles/domain-oriented-observability/twitter-card.png' width = '350'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Any serious software system needs some form of observability, so we can
+      figure out how it is working and keep track of problems. But adding the
+      code for this often results in lots of low-level cruft. &lt;a href = 'https://thepete.net/'&gt;Pete Hodgson&lt;/a&gt; describes a pattern that allows
+      developers to add observability via a testable domain-oriented API that
+      removes most of this cruft.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Bliki: LockInCost</title>
+    <link href="https://martinfowler.com/bliki/LockInCost.html"/>
+    <updated>2019-03-05T08:27:00-05:00</updated>
+    <id>https://martinfowler.com/bliki/LockInCost.html</id>
+    <category term="bliki"/>
+    <author>
+      <name>Wisen Tanasa</name>
+      <uri>https://github.com/ceilfors</uri>
+    </author>
+    <content type="html">
+      &lt;p&gt;In my recent client engagement, I foresaw that serverless architecture was
+      a perfect fit. The idea of adopting serverless architecture, though, didn&#x2019;t
+      fly to our client well due to the fear of vendor lock-in. It was an
+      interesting time for retailers as staying in AWS might mean that Amazon, as
+      another retail business, will be given a competitive advantage. Given the idea
+      of not supporting a competitor, my client was interested to ensure that the
+      solution chosen by us is fully portable to other cloud vendors.&lt;/p&gt;
+
+      &lt;p&gt;From a technical perspective, ensuring that we have the ability to move our
+      system from one platform to another is definitely desirable. With the advent
+      of containerization, why would one be interested to be locked in a specific
+      platform? A high lock-in cost is not something that we would like to show back
+      to the business when we have decided to move another platform. We, therefore,
+      need to make sure that the migration cost is as low as possible when this
+      scenario happens. If I&#x2019;m about to make a simple formula for lock-in cost with
+      our current understanding, it would look like this:&lt;/p&gt;
+
+      &lt;p&gt;&lt;b&gt;Lock-in cost = Migration cost (?)&lt;/b&gt;&lt;/p&gt;
+
+      &lt;p&gt;This formula is correct when we are looking at it only from a technical
+      perspective. A business perspective, however, should not be overlooked.
+      Remember that the technical solutions we deliver are always designed to solve
+      business problems. Most of the times the business get a benefit when a
+      particular technology is adopted. One of the significant benefits is a faster
+      time to market. Faster time to market can be formulated into opportunity
+      gain:&lt;/p&gt;
+
+      &lt;p&gt;&lt;b&gt;Lock-in cost = Migration cost - Opportunity gain&lt;/b&gt;&lt;/p&gt;
+
+      &lt;p&gt;Opportunity gain is very difficult to measure because you are dealing with
+      an unknown unknown. Migration cost can be analyzed and reasoned. Opportunity
+      gain, in contrast, is not as easy to analyze. You can theorize and analyze how
+      to migrate from one platform to another, but how would you calculate the gain
+      of seizing your competitors&#x2019; market opportunity? By looking at your
+      decision-making process from a holistic view, combining both the technical and
+      business perspective, the lock-in decision you are taking might result in a
+      profit.&lt;/p&gt;
+
+      &lt;p&gt;Let&#x2019;s have a look into an example of building an event-driven architecture.
+      You will need to choose a distributed messaging system in the architecture. If
+      you are already chosen AWS as your platform, you would have the option of
+      vendor-specific services like Kinesis. These services are fully managed and
+      you can get it running in no time, hence giving you an opportunity gain. In
+      comparison with a vendor-agnostic system like Kafka, these vendor-specific
+      services will incur a higher migration cost. Setting up your own distributed
+      messaging system, however, will take more time to harden and for it to be
+      made production ready, especially when you are not experienced in building
+      such platform yet. Instead of looking at your decision from just migration
+      cost, focus on how you can reduce the migration cost by making your system
+      more adaptable. Especially in this example of using a cloud, this is
+      a similar reason on why we recommend to avoid the practice of
+      &lt;a href="https://www.thoughtworks.com/radar/techniques/generic-cloud-usage"&gt;
+      generic cloud usage.&lt;/a&gt;&lt;/p&gt;
+
+      &lt;div class="acknowledgements"&gt;
+      &lt;h2&gt;Acknowledgements&lt;/h2&gt;
+
+      &lt;p&gt;Thanks to Chris Ford, Matt Newman, Luciano Ramalho, Tobias Vogel, Zhamak Dehghani, Kitson Kelly, and Peter Gillard-Moss
+      for their inputs.&lt;/p&gt;
+
+      &lt;p&gt;Special thanks to Martin Fowler for his support, suggestions, and time spent with the content and help with publishing.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class="shares"&gt;
+      &lt;div class="icons"&gt;&lt;span class="label"&gt;Share:&lt;/span&gt;&lt;a href="https://twitter.com/intent/tweet?url=https://martinfowler.com/bliki/LockInCost.html&amp;amp;text=Bliki:%20LockInCost%20%E2%9E%99%20" title="Share on Twitter"&gt;&lt;img src="/t_mini-a.png"&gt;&lt;/a&gt;&lt;a href="https://facebook.com/sharer.php?u=https://martinfowler.com/bliki/LockInCost.html" title="Share on Facebook"&gt;&lt;img src="/fb-icon-20.png"&gt;&lt;/a&gt;&lt;a href="https://plus.google.com/share?url=https://martinfowler.com/bliki/LockInCost.html" title="Share on Google Plus"&gt;&lt;img src="/gplus-16.png"&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;div class="comment"&gt;if you found this article useful, please share it. I appreciate the feedback and encouragement&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class="clear"&gt;&lt;/div&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Fixing attribute completion in Emacs nxml-mode</title>
+    <link href="https://martinfowler.com/articles/emacs-nxml-completion.html"/>
+    <updated>2019-02-20T18:10:00-05:00</updated>
+    <id>tag:martinfowler.com,2019-02-20:Fixing-attribute-completion-in-Emacs-nxml-mode</id>
+    <content type="html">
+      &lt;p&gt;I write most pages on this website in an XML format source file, and
+      use emacs to edit those sources. I&amp;#x2019;m very happy with how nxml-mode works
+      with prose-style XML, making it much more usable than other environments
+      seem to be. But recent changes (with emacs 26.1, IIRC) put a bit of grit
+      into the environment.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/emacs-nxml-completion.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Repair to &#x201C;Using OAuth for a simple command line script to access Google's data&#x201D;</title>
+    <link href="https://martinfowler.com/articles/command-line-google.html"/>
+    <updated>2019-01-22T09:11:00-05:00</updated>
+    <id>tag:martinfowler.com,2019-01-22:Repair-to--Using-OAuth-for-a-simple-command-line-script-to-access-Google-s-data-</id>
+    <content type="html">
+      &lt;p&gt;In 2015, I wrote a command line script to get some data from YouTube.
+      Since I had difficulty puzzling out the limited documentation,
+      particularly on the authentication and authorization aspects, I wrote a
+      short article to capture what I'd learned. Google updated its libraries in
+      2016, breaking my scripts. I was busy with other things at the time, so
+      didn't update them (or the article). Finally I've got around to it now,
+      and updated both. Going back, I found the article handy to remind myself how to
+      work with Google's use of OAuth, with refresh and access tokens.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/command-line-google.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>photostream 119</title>
+    <link href="https://martinfowler.com/photos/119.html"/>
+    <updated>2019-01-19T15:12:00-05:00</updated>
+    <id>tag:martinfowler.com,2019-01-19:photostream-119</id>
+    <content type="html">
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/photos/119.html'&gt;&lt;img src = 'https://martinfowler.com/photos/119.jpg'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;
+
+      &lt;p&gt;&lt;/p&gt;
+
+      &lt;p&gt;Washington, D.C (2018)&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Kindle edition of Refactoring now available from Amazon</title>
+    <link href="https://martinfowler.com/books/refactoring.html"/>
+    <updated>2018-12-17T15:32:00-05:00</updated>
+    <id>tag:martinfowler.com,2018-12-17:Kindle-edition-of-Refactoring-now-available-from-Amazon</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;p&gt;Amazon is now selling the Kindle edition of Refactoring. As I write
+      this, it's a touch more expensive than the hardback since they are currently
+      discounting the hardback but not the electronic version.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/books/refactoring.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Face to Face with the Book</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#face-to-face"/>
+    <updated>2018-12-10T13:51:00-05:00</updated>
+    <id>tag:martinfowler.com,2018-12-10:Face-to-Face-with-the-Book</id>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#face-to-face'&gt;&lt;img src = 'https://martinfowler.com/articles/refactoring-2nd-ed/eyes.png' width = '300'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;The books arrived at my house a couple of weeks ago, but I missed them
+      as I was on the road.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#face-to-face'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Refactoring released on informit</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#released-on-informit"/>
+    <updated>2018-11-26T06:08:00-05:00</updated>
+    <id>tag:martinfowler.com,2018-11-26:Refactoring-released-on-informit</id>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#released-on-informit'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;You &lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#released-on-informit'&gt;can now order &lt;/a&gt; the second edition of Refactoring from
+      informit, in both physical and ebook formats. It will become available on
+      Amazon in the next few days. &lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#released-on-informit'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Pre-ordered Refactoring books are now shipping</title>
+    <link href="https://martinfowler.com/articles/20181121-refactoring-going-out.html"/>
+    <updated>2018-11-21T11:42:00-05:00</updated>
+    <id>tag:martinfowler.com,2018-11-21:Pre-ordered-Refactoring-books-are-now-shipping</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/20181121-refactoring-going-out.html'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;I heard from my editor at Pearson that copies of books pre-ordered on
+      &lt;a href = 'https://informit.com'&gt;informit.com&lt;/a&gt; are now shipping.
+      Pearson is also sending books to Amazon. Although Amazon still shows a Dec
+      31 availability date, they usually update that once they get stock in
+      their distribution centers.&lt;/p&gt;
+
+      &lt;p&gt;The ebooks will be available soon on informit, possibly as early as
+      Friday. Kindle editions on Amazon usually show up a week or so later.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/20181121-refactoring-going-out.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Refactoring 2nd Ed printed</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#books-are-printed"/>
+    <updated>2018-11-19T15:20:00-05:00</updated>
+    <id>tag:martinfowler.com,2018-11-19:Refactoring-2nd-Ed-printed</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#books-are-printed'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;A quick update on the latest state of play for the book. The books have
+      been printed and are on their way to Pearson's warehouse. I've completed
+      the files for the web edition, but we need to test them on Pearson's
+      infrastructure. Once those are done, we can release the book for people to
+      buy. We hope to flip the switch on InformIT (Pearson's web site) early
+      next week. Amazon should follow shortly after that. Thanksgiving may add
+      some delay, all those turkeys clog up the supply lines. But I'll let
+      everyone know more as I find out more.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#books-are-printed'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Updated refactoring.com for second edition</title>
+    <link href="https://martinfowler.com/articles/201811-update-refactoring-com.html"/>
+    <updated>2018-11-19T11:45:00-05:00</updated>
+    <id>tag:martinfowler.com,2018-11-19:Updated-refactoring-com-for-second-edition</id>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/201811-update-refactoring-com.html'&gt;&lt;img src = 'https://www.refactoring.com/refactoring-logo.png' width = '300'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;With the new edition of my book on refactoring getting close to the
+      bookshelves, I've spent some time to update refactoring.com. I've changed
+      the visual design, put together a new home page to summarize what
+      refactoring is, and updated the catalog.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/201811-update-refactoring-com.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>photostream 118</title>
+    <link href="https://martinfowler.com/photos/118.html"/>
+    <updated>2018-10-27T10:22:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-10-27:photostream-118</id>
+    <content type="html">
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/photos/118.html'&gt;&lt;img src = 'https://martinfowler.com/photos/118.jpg'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;
+
+      &lt;p&gt;&lt;/p&gt;
+
+      &lt;p&gt;Butchart Gardens, B.C., Canada (2017)&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Working on the Web Edition of Refactoring 2nd Ed</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#working-on-the-web-edition"/>
+    <updated>2018-10-20T17:57:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-10-20:Working-on-the-Web-Edition-of-Refactoring-2nd-Ed</id>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#working-on-the-web-edition'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;After a couple of ThoughtWorks meetings, I've put decent work into the
+      web edition of the book. While I still have a few things to do, it's now
+      close to done.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#working-on-the-web-edition'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Refactoring 2nd Ed sent to printers</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#gone-to-the-printers"/>
+    <updated>2018-09-28T17:39:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-09-28:Refactoring-2nd-Ed-sent-to-printers</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#gone-to-the-printers'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;The files for the book were sent to the printers today. The printed
+      books should arrive in warehouses late October - early November. I need to
+      work on getting the web edition ready for then, and will start on that in
+      a couple of weeks.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#gone-to-the-printers'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Four additions to my list of Eurogames</title>
+    <link href="https://martinfowler.com/articles/eurogames/"/>
+    <updated>2018-09-05T11:00:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-09-05:Four-additions-to-my-list-of-Eurogames</id>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/eurogames/'&gt;&lt;img src = 'https://martinfowler.com/snips/azul-kb-gl-concordia.png' width = '300'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Over the last couple of weeks, I've updated my list of Eurogames to
+      include short reviews for four games I acquired earlier this year:
+      &lt;a href = '/articles/eurogames/#concordia'&gt;Concordia&lt;/a&gt;, &lt;a href = '/articles/eurogames/#kingdom-builder'&gt;Kingdom Builder&lt;/a&gt;, &lt;a href = '/articles/eurogames/#azul'&gt;Azul&lt;/a&gt;, and &lt;a href = '/articles/eurogames/#glass-road'&gt;Glass Road&lt;/a&gt;.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/eurogames/'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Changes for 2nd Edition of Refactoring</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-changes.html"/>
+    <updated>2018-09-05T07:51:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-09-05:Changes-for-2nd-Edition-of-Refactoring</id>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-changes.html'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Here's summary of the changes in the second edition, including a table
+      showing the fate of the original 68 refactorings and a list of the new ones.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-changes.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>photostream 117</title>
+    <link href="https://martinfowler.com/photos/117.html"/>
+    <updated>2018-09-01T12:42:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-09-01:photostream-117</id>
+    <content type="html">
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/photos/117.html'&gt;&lt;img src = 'https://martinfowler.com/photos/117.jpg'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;
+
+      &lt;p&gt;&lt;/p&gt;
+
+      &lt;p&gt;Zinal, Switzerland (2014)&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Most people will be disappointed by the second edition of Refactoring</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#most-people-will-be-disappointed-by-the-second-edition"/>
+    <updated>2018-08-30T12:03:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-30:Most-people-will-be-disappointed-by-the-second-edition-of-Refactoring</id>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#most-people-will-be-disappointed-by-the-second-edition'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;I've put a lot of hard work into the second edition of Refactoring. But
+      I reckon that most people will be disappointed by it when it comes out,
+      even though I think it's an improvement over the original. This memo
+      explains why, and why I think that initial reaction ultimately doesn't matter.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#most-people-will-be-disappointed-by-the-second-edition'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Completing the extraction of a data-rich service</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step8.PointNewServiceToTheNewDatabase"/>
+    <updated>2018-08-30T11:26:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-30:Completing-the-extraction-of-a-data-rich-service</id>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step8.PointNewServiceToTheNewDatabase'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Praful completes the steps of extracting a data rich service by
+      pointing the new service to the new database and removing the dead logic
+      and schema from the monolith.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step8.PointNewServiceToTheNewDatabase'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Refactoring 2nd Edition rough cut available</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#rough-cut-available-on-safari"/>
+    <updated>2018-08-29T10:03:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-29:Refactoring-2nd-Edition-rough-cut-available</id>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#rough-cut-available-on-safari'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;A rough cut of the book (after copy-edit, but before proofing) is now
+      available on Safari.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#rough-cut-available-on-safari'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Steps 6 &amp; 7 of extracting a data-rich service</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step6.CreateTheDatabaseForTheNewService"/>
+    <updated>2018-08-29T07:51:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-29:Steps-6---7-of-extracting-a-data-rich-service</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step6.CreateTheDatabaseForTheNewService'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Two steps today from Praful's service extraction article. Step 6
+      creates a new database for the service and 7 syncs the data from the
+      monolith&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step6.CreateTheDatabaseForTheNewService'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Step 5 of extracting a data-rich service</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step5.PointClientsToTheNewService"/>
+    <updated>2018-08-28T15:09:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-28:Step-5-of-extracting-a-data-rich-service</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step5.PointClientsToTheNewService'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Now Praful lets clients of the catalog switch over to use the new
+      product pricing service, they don't all have to move at the same time, but
+      they do have to move before we can continue the migration.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step5.PointClientsToTheNewService'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Step 4 of extracting a data-rich service</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step4.BuildNewServicePointingToTablesInMonolithicDatabase"/>
+    <updated>2018-08-27T11:26:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-27:Step-4-of-extracting-a-data-rich-service</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step4.BuildNewServicePointingToTablesInMonolithicDatabase'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Praful's 4th step is to build the new service, which initially uses the
+      tables in the monolith.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step4.BuildNewServicePointingToTablesInMonolithicDatabase'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Agile Australia Keynote: State of Agile in 2018</title>
+    <link href="https://martinfowler.com/articles/agile-aus-2018.html"/>
+    <updated>2018-08-27T11:17:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-27:Agile-Australia-Keynote--State-of-Agile-in-2018</id>
+    <content type="html">
+      &lt;p&gt;The transcript of my Agile Australia keynote on agile in 2018. I comment
+      that although agile is now mainstream, much of what is done is faux-agile.
+      I outline three main challenges:&lt;/p&gt;
+
+      &lt;ul&gt;
+      &lt;li&gt;stop Agile Industrial Complex imposing process&lt;/li&gt;
+
+      &lt;li&gt;raise importance of tech excellence&lt;/li&gt;
+
+      &lt;li&gt;prefer products over projects&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;and one reason to be optimistic&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/agile-aus-2018.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Refactoring 2nd Ed: Composing the Print Book</title>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#composing-the-print-book"/>
+    <updated>2018-08-24T12:48:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-24:Refactoring-2nd-Ed--Composing-the-Print-Book</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#composing-the-print-book'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;During the last couple of weeks, my work on the refactoring book has
+      focused on tidying up various loose ends for the print book. We&amp;#x2019;re now at
+      the point where the production work is now in the hands of Alina
+      Kirsanova, who sorts out the composition of the book, together with proof
+      reading. Composing a book means paying attention to the look of each page,
+      and various problems crop up around pagination.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#composing-the-print-book'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Step 2 of extracting a data-rich service</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step2.CreateALogicalSeparationForTheLogicOfTheNewServiceInTheMonolith"/>
+    <updated>2018-08-24T09:05:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-24:Step-2-of-extracting-a-data-rich-service</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step2.CreateALogicalSeparationForTheLogicOfTheNewServiceInTheMonolith'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;Praful now moves onto the second step: creating a logical separation
+      for the new service inside the existing monolith&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step2.CreateALogicalSeparationForTheLogicOfTheNewServiceInTheMonolith'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>Step 3 of extracting a data-rich service</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step3.CreateNewTablesToSupportTheLogicOfTheNewServiceInTheMonolith"/>
+    <updated>2018-08-24T09:05:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-24:Step-3-of-extracting-a-data-rich-service</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step3.CreateNewTablesToSupportTheLogicOfTheNewServiceInTheMonolith'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;For step 3, Praful separates the future service's data into a
+      separate table within the monolith.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step3.CreateNewTablesToSupportTheLogicOfTheNewServiceInTheMonolith'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+  <entry>
+    <title>How to extract a data-rich service from a monolith</title>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html"/>
+    <updated>2018-08-23T09:13:00-04:00</updated>
+    <id>tag:martinfowler.com,2018-08-23:How-to-extract-a-data-rich-service-from-a-monolith</id>
+    <content type="html">
+      &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+      &lt;p&gt;As people get more interested in microservices, there is a growing
+      interest in how to split up an existing monolith into microservices. A
+      few months ago Zhamak Dehghani &lt;a href = '/articles/break-monolith-into-microservices.html'&gt;explored the basic
+      strategy&lt;/a&gt; of breaking a monolith into microservices. Now Praful Todkar,
+      another of my colleagues, delves into the details of &lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html'&gt;how you do a service
+      extraction&lt;/a&gt; - specifically when that service includes part of the
+      monolith's database. He breaks the process down into a series of steps,
+      starting by identifying the logic and data items that need to be
+      extracted. We'll be releasing further installments of this article,
+      outlining the various steps, over the next couple of weeks.&lt;/p&gt;
+
+      &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
+    </content>
+  </entry>
+
+</feed>

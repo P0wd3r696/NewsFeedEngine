@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using HtmlAgilityPack;
 
 namespace NewsFeedEngine.Models
 {
@@ -8,7 +10,7 @@ namespace NewsFeedEngine.Models
     {
         private bool _isValid;
 
-        public string GetPictures(string link, string parent, string child)
+        public string GetPictures(string link, string parent, string child, NewsArticle newsArticle)
         {
             var xml = XDocument.Parse(link);
             IEnumerable<NewsArticle> rssFeedData;
@@ -24,7 +26,7 @@ namespace NewsFeedEngine.Models
                     if (string.IsNullOrEmpty(rssFeedData.FirstOrDefault()?.Picture))
                     {
                         _isValid = true;
-                        return GetPictures(link, "channel", "image");
+                        return GetPictures(link, "channel", "image", newsArticle);
                     }
                 }
                 else
@@ -40,18 +42,16 @@ namespace NewsFeedEngine.Models
             }
             else if (link.Contains("atom"))
             {
-                rssFeedData = xml.Descendants(parent)
-                    .Select(x => new NewsArticle
-                    {
-                        Picture = (string)x.Element(child)?.Attribute("src")
-                    });
-                return rssFeedData.FirstOrDefault()?.Picture;
+                HtmlDocument htmlDoc = new HtmlDocument(); htmlDoc.LoadHtml(newsArticle.Summary);
+                if (htmlDoc.DocumentNode.SelectNodes("//img[@src]") != null)
+                {
+                    newsArticle.Picture = htmlDoc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()?.Attributes[0].Value;
+
+                }
+                newsArticle.Summary = Regex.Replace(htmlDoc.DocumentNode.SelectNodes("//p")[0].InnerHtml, @"\t|\n|\r", "").Trim();
+                return newsArticle.Picture;
             }
-            //if (string.IsNullOrEmpty(rssFeedData.FirstOrDefault()?.Picture))
-            //{
-            //    GetPictures(client, link, "channel", "image");
-            //}
-            //return rssFeedData.FirstOrDefault()?.Picture;
+
             return null;
         }
     }
