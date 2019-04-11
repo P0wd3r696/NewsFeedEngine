@@ -32,7 +32,7 @@ namespace NewsFeedEngine
         public static void GetRssFeed()
         {
             RssHandler rssHandler = new RssHandler();
-            AtomHandler atomHandler = new AtomHandler(); 
+            AtomHandler atomHandler = new AtomHandler();
             foreach (var feed in Context.NewsFeeds.ToList())
             {
                 var rssLink = feed.RssUrl;
@@ -43,11 +43,11 @@ namespace NewsFeedEngine
                     var isRssFeed = IsRssFeed(rssData);
                     if (isRssFeed)
                     {
-                        rssHandler.GetRssFeed(rssData);
+                        rssHandler.GetRssFeed(rssData, feed.CategoryId);
                     }
                     else
                     {
-                        atomHandler.GetRssFeed(rssData);
+                        atomHandler.GetRssFeed(rssData, feed.CategoryId);
                     }
                 }
             }

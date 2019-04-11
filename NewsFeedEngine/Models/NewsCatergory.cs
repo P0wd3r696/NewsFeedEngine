@@ -18,6 +18,7 @@ namespace NewsFeedEngine.Models
         public NewsCatergory()
         {
             this.NewsFeeds = new HashSet<NewsFeed>();
+            this.NewsArticles = new HashSet<NewsArticle>();
         }
     
         public int CatergoryId { get; set; }
@@ -26,5 +27,7 @@ namespace NewsFeedEngine.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NewsFeed> NewsFeeds { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NewsArticle> NewsArticles { get; set; }
     }
 }

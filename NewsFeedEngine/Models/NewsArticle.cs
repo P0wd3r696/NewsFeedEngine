@@ -20,7 +20,10 @@ namespace NewsFeedEngine.Models
         public Nullable<int> ProviderId { get; set; }
         public string Picture { get; set; }
         public string LinkUrl { get; set; }
+        public System.DateTime pubDate { get; set; }
+        public Nullable<int> CategoryId { get; set; }
     
         public virtual NewsProvider NewsProvider { get; set; }
+        public virtual NewsCatergory NewsCatergory { get; set; }
     }
 }

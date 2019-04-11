@@ -5,10 +5,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NewsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self"
-              xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
-              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
-              xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NewsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="CountryId" />
@@ -27,6 +32,8 @@
           <Property Name="ProviderId" Type="int" />
           <Property Name="Picture" Type="varchar(max)" />
           <Property Name="LinkUrl" Type="varchar(max)" />
+          <Property Name="pubDate" Type="datetime" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
         </EntityType>
         <EntityType Name="NewsCatergory">
           <Key>
@@ -56,6 +63,37 @@
           <Property Name="Url" Type="varchar" MaxLength="50" />
           <Property Name="CountryId" Type="int" />
         </EntityType>
+        <EntityType Name="ParentCategory">
+          <Key>
+            <PropertyRef Name="ParentId" />
+          </Key>
+          <Property Name="ParentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentName" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_NewsArticle_NewsCatergory">
+          <End Role="NewsCatergory" Type="Self.NewsCatergory" Multiplicity="0..1" />
+          <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCatergory">
+              <PropertyRef Name="CatergoryId" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsArticle_NewsProvider">
+          <End Role="NewsProvider" Type="Self.NewsProvider" Multiplicity="0..1" />
+          <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsProvider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NewsArticle_NewsProvider1">
           <End Role="NewsProvider" Type="Self.NewsProvider" Multiplicity="0..1" />
           <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="*" />
@@ -105,11 +143,21 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="NewsDBModelStoreContainer">
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsArticle" EntityType="Self.NewsArticle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsCatergory" EntityType="Self.NewsCatergory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsFeed" EntityType="Self.NewsFeed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsProvider" EntityType="Self.NewsProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParentCategory" EntityType="Self.ParentCategory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NewsArticle_NewsCatergory" Association="Self.FK_NewsArticle_NewsCatergory">
+            <End Role="NewsCatergory" EntitySet="NewsCatergory" />
+            <End Role="NewsArticle" EntitySet="NewsArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsArticle_NewsProvider" Association="Self.FK_NewsArticle_NewsProvider">
+            <End Role="NewsProvider" EntitySet="NewsProvider" />
+            <End Role="NewsArticle" EntitySet="NewsArticle" />
+          </AssociationSet>
           <AssociationSet Name="FK_NewsArticle_NewsProvider1" Association="Self.FK_NewsArticle_NewsProvider1">
             <End Role="NewsProvider" EntitySet="NewsProvider" />
             <End Role="NewsArticle" EntitySet="NewsArticle" />
@@ -127,8 +175,7 @@
             <End Role="NewsProvider" EntitySet="NewsProvider" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NewsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
@@ -158,6 +205,9 @@
           <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsArticle_NewsProvider1"
                               FromRole="NewsArticle" ToRole="NewsProvider" />
           <Property Name="LinkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pubDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="NewsCatergory" Relationship="NewsDBModel.FK_NewsArticle_NewsCatergory" FromRole="NewsArticle" ToRole="NewsCatergory" />
         </EntityType>
         <EntityType Name="NewsCatergory">
           <Key>
@@ -168,6 +218,7 @@
           <Property Name="ParentId" Type="Int32" />
           <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsCatergory"
                               ToRole="NewsFeed" />
+          <NavigationProperty Name="NewsArticles" Relationship="NewsDBModel.FK_NewsArticle_NewsCatergory" FromRole="NewsCatergory" ToRole="NewsArticle" />
         </EntityType>
         <EntityType Name="NewsFeed">
           <Key>
@@ -269,7 +320,40 @@
             <End Role="NewsProvider" EntitySet="NewsProviders" />
             <End Role="NewsFeed" EntitySet="NewsFeeds" />
           </AssociationSet>
+          <AssociationSet Name="FK_NewsArticle_NewsCatergory" Association="NewsDBModel.FK_NewsArticle_NewsCatergory">
+            <End Role="NewsCatergory" EntitySet="NewsCatergories" />
+            <End Role="NewsArticle" EntitySet="NewsArticles" />
+          </AssociationSet>
+          <EntitySet Name="Country1" EntityType="NewsDBModel.Country1" />
+          <EntitySet Name="ParentCategories" EntityType="NewsDBModel.ParentCategory" />
         </EntityContainer>
+        <Association Name="FK_NewsArticle_NewsCatergory">
+          <End Type="NewsDBModel.NewsCatergory" Role="NewsCatergory" Multiplicity="0..1" />
+          <End Type="NewsDBModel.NewsArticle" Role="NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCatergory">
+              <PropertyRef Name="CatergoryId" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Country1">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ParentCategory">
+          <Key>
+            <PropertyRef Name="ParentId" />
+          </Key>
+          <Property Name="ParentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -288,6 +372,8 @@
           <EntitySetMapping Name="NewsArticles">
             <EntityTypeMapping TypeName="NewsDBModel.NewsArticle">
               <MappingFragment StoreEntitySet="NewsArticle">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="pubDate" ColumnName="pubDate" />
                 <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -325,6 +411,23 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country1">
+            <EntityTypeMapping TypeName="NewsDBModel.Country1">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParentCategories">
+            <EntityTypeMapping TypeName="NewsDBModel.ParentCategory">
+              <MappingFragment StoreEntitySet="ParentCategory">
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

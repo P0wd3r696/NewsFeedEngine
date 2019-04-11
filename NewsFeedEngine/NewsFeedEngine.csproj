@@ -59,6 +59,9 @@
     <Compile Include="Models\Country.cs">
       <DependentUpon>NewsFeed.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Country1.cs">
+      <DependentUpon>NewsFeed.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NewsArticle.cs">
       <DependentUpon>NewsFeed.tt</DependentUpon>
     </Compile>
@@ -84,6 +87,9 @@
       <DependentUpon>NewsFeed.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NewsProvider.cs">
+      <DependentUpon>NewsFeed.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ParentCategory.cs">
       <DependentUpon>NewsFeed.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PictureHandler.cs" />

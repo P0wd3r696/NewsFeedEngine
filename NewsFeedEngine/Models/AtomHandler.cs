@@ -17,7 +17,7 @@ namespace NewsFeedEngine.Models
         private readonly NewsDBEntities _context = new NewsDBEntities();
         private readonly PictureHandler _pictureHandler = new PictureHandler();
 
-        public void SaveToDbAtom(IEnumerable<NewsArticle> rssFeed, string rssData)
+        public void SaveToDbAtom(IEnumerable<NewsArticle> rssFeed, string rssData, int? categoryId)
         {
             foreach (var rss in rssFeed)
             {
@@ -34,6 +34,9 @@ namespace NewsFeedEngine.Models
                         if (rss.Summary == string.Empty) continue;
                         try
                         {
+                            rss.CategoryId = categoryId;
+                            rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.LinkUrl.Contains(x.Name.Replace(" ","")))?
+                                .ProviderId;
                             rss.Summary = rss.Summary.Trim();
                             rss.Title = splittedRssTitle[0].Trim();
                             _context.NewsArticles.Add(rss);
@@ -49,6 +52,9 @@ namespace NewsFeedEngine.Models
                     {
                         try
                         {
+                            rss.CategoryId = categoryId;
+                            rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.LinkUrl.Contains(x.Name.Replace(" ", "")))?
+                                .ProviderId;
                             rss.Title = splittedRssTitle[1].Trim();
                             _context.NewsArticles.Add(rss);
                             _context.SaveChanges();
@@ -69,7 +75,7 @@ namespace NewsFeedEngine.Models
             return Encoding.UTF8.GetString(bytes);
         }
 
-        public void GetRssFeed(string rssData)
+        public void GetRssFeed(string rssData,int? categoryId)
         {
             try
             {
@@ -81,10 +87,11 @@ namespace NewsFeedEngine.Models
                               {
                                   Summary = item.Elements().First(i => i.Name.LocalName == "content").Value,
                                   LinkUrl = item.Elements().First(i => i.Name.LocalName == "link").Attribute("href")?.Value,
-                                  Picture = item.Elements().First(i => i.Name.LocalName == "link").Attribute("src")?.Value,
-                                  Title = item.Elements().First(i => i.Name.LocalName == "title").Value
+                                  Picture = item.Elements().First(i => i.Name.LocalName == "content").Attribute("src")?.Value,
+                                  Title = item.Elements().First(i => i.Name.LocalName == "title").Value,
+                                  pubDate = Convert.ToDateTime(item.Elements().First(i => i.Name.LocalName == "updated").Value)
                               };
-                SaveToDbAtom(entries, rssData);
+                SaveToDbAtom(entries, rssData,categoryId);
                 Console.WriteLine("End!");
             }
             catch (XmlException ex)

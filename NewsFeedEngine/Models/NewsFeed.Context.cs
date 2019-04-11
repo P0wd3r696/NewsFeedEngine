@@ -30,5 +30,7 @@ namespace NewsFeedEngine.Models
         public virtual DbSet<NewsCatergory> NewsCatergories { get; set; }
         public virtual DbSet<NewsFeed> NewsFeeds { get; set; }
         public virtual DbSet<NewsProvider> NewsProviders { get; set; }
+        public virtual DbSet<Country1> Country1 { get; set; }
+        public virtual DbSet<ParentCategory> ParentCategories { get; set; }
     }
 }
