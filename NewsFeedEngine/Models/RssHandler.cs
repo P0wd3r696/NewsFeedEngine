@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using HtmlAgilityPack;
 using NewsFeedEngine.Utilities;
 
 namespace NewsFeedEngine.Models
@@ -24,16 +26,29 @@ namespace NewsFeedEngine.Models
                     if (splittedRssTitle.Length == 1)
                     {
                         var splittedTitle = splittedRssTitle[0];
-                        if (rss.Summary == string.Empty) continue;
+                        if (rss.Summary == string.Empty) continue;  
                         try
                         {
-                            if (_context.NewsArticles.Any(x => x.Title != splittedTitle))
+                            if (rss.Summary.Contains("<img"))
                             {
-                                rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.LinkUrl.Contains(x.Name.Replace(" ", "")))?
+                                var doc = new HtmlDocument();
+                                doc.LoadHtml(rss.Summary);
+                                rss.Summary = doc.DocumentNode.ChildNodes["p"].InnerText;
+                                rss.Picture = doc.DocumentNode.FirstChild.FirstChild.Attributes["src"].Value;
+                                //Regex r = new Regex(@"https://.+?/>");
+                                //var a = r.Matches(rss.Summary, 0);
+                                //var pictureMatch = Regex.Match(rss.Summary, @"(?<=\bsrc=\"")[^\""]*");
+                                //var summaryMatch = Regex.Match(rss.Summary, @"(<p.*?> (.*?)<\\/p>");
+                            }
+
+                            if (_context.NewsArticles.ToList().Exists(x => !x.Title.Contains(splittedTitle)))
+                            {
+                                //rss.Picture =null;
+                                rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                     .ProviderId;
                                 rss.CategoryId = categoryId;
                                 rss.Title = splittedRssTitle[0].Trim();
-
+                                //rss.pubDate = rss.pubDate;
                                 _context.NewsArticles.Add(rss);
                                 _context.SaveChanges();
                             }
@@ -48,7 +63,7 @@ namespace NewsFeedEngine.Models
                     {
                         try
                         {
-                            rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.LinkUrl.Contains(x.Name.Replace(" ", "")))?
+                            rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                 .ProviderId;
 
                             rss.CategoryId = categoryId;
@@ -66,6 +81,11 @@ namespace NewsFeedEngine.Models
         }
 
 
+        private string ChangeTextToHtml(string rssData)
+        {
+            var xml = WebUtility.HtmlDecode(rssData);
+            return xml;
+        }
         public string EncodeText(string rssTitle)
         {
             var bytes = Encoding.Default.GetBytes(rssTitle);
@@ -80,10 +100,10 @@ namespace NewsFeedEngine.Models
                 .Select(x => new NewsArticle
                 {
                     Title = (string)x.Element("title"),
-                    LinkUrl = (string)x.Element("link"),
+                    Url = (string)x.Element("link"),
                     Summary = (string)x.Element("description"),
-                    Picture = (string)x.Element("image")?.Element("url"),
-                    pubDate = (DateTime)x.Element("pubDate")
+                    Picture = (string)x.Element("image")?.Element("url")//,
+                    //pubDate = (DateTime)x.Element("pubDate")
                 });
 
             SaveToDb(rssFeedData, rssData, categoryId);

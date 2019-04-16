@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +47,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>24500C06FC320473B4C3756BF8FCEC9EC66212C3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>NewsFeedEngine_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -55,57 +83,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AtomHandler.cs" />
     <Compile Include="Models\Country.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Country1.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NewsArticle.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewsCatergory.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+    <Compile Include="Models\NewsCategory.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewsFeed.Context.cs">
+    <Compile Include="Models\NewsDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewsFeed.Context.tt</DependentUpon>
+      <DependentUpon>NewsDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\NewsFeed.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NewsFeed.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewsFeed.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NewsFeed1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NewsProvider.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ParentCategory.cs">
-      <DependentUpon>NewsFeed.tt</DependentUpon>
+      <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PictureHandler.cs" />
     <Compile Include="Models\RssHandler.cs" />
+    <Compile Include="Models\selectActiveNewsFeed_Result.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\StaticData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Models\NewsFeed.edmx">
+    <EntityDeploy Include="Models\NewsDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NewsFeed.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewsDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\NewsFeed.edmx.diagram">
-      <DependentUpon>NewsFeed.edmx</DependentUpon>
+    <None Include="Models\NewsDB.edmx.diagram">
+      <DependentUpon>NewsDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="XMLSchema.xsd">
@@ -113,20 +159,32 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\NewsFeed.Context.tt">
+    <Content Include="Models\NewsDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NewsFeed.Context.cs</LastGenOutput>
-      <DependentUpon>NewsFeed.edmx</DependentUpon>
+      <DependentUpon>NewsDB.edmx</DependentUpon>
+      <LastGenOutput>NewsDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\NewsFeed.tt">
+    <Content Include="Models\NewsDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NewsFeed.edmx</DependentUpon>
-      <LastGenOutput>NewsFeed1.cs</LastGenOutput>
+      <DependentUpon>NewsDB.edmx</DependentUpon>
+      <LastGenOutput>NewsDB.cs</LastGenOutput>
     </Content>
     <Content Include="XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

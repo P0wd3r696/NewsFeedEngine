@@ -10,19 +10,14 @@
 namespace NewsFeedEngine.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NewsFeed
+    public partial class selectActiveNewsFeed_Result
     {
         public int NewsFeedId { get; set; }
-        public Nullable<int> ProviderId { get; set; }
+        public string Name { get; set; }
         public string RssUrl { get; set; }
-        public string Image { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CategoryId { get; set; }
-    
-        public virtual NewsCategory NewsCategory { get; set; }
-        public virtual NewsProvider NewsProvider { get; set; }
+        public string CategoryName { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="340e3122e66d4b1e8cc12b663d53f710" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.Admin" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.AspNetUser" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.Country" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.NewsArticle" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.NewsCategory" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.NewsFeed" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.NewsProvider" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDBNoncedoModel.ParentCategory" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_NewsProvider_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_NewsArticle_NewsCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_NewsArticle_NewsProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_NewsCategory_ParentCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_NewsFeed_NewsCatergory" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.FK_NewsFeed_NewsProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDBNoncedoModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

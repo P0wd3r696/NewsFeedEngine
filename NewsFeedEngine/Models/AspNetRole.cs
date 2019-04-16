@@ -12,22 +12,18 @@ namespace NewsFeedEngine.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NewsCatergory
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NewsCatergory()
+        public AspNetRole()
         {
-            this.NewsFeeds = new HashSet<NewsFeed>();
-            this.NewsArticles = new HashSet<NewsArticle>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int CatergoryId { get; set; }
-        public string CategoryName { get; set; }
-        public Nullable<int> ParentId { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NewsFeed> NewsFeeds { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NewsArticle> NewsArticles { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

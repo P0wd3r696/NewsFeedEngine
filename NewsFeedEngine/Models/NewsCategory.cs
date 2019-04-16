@@ -12,18 +12,23 @@ namespace NewsFeedEngine.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ParentCategory
+    public partial class NewsCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ParentCategory()
+        public NewsCategory()
         {
-            this.NewsCategories = new HashSet<NewsCategory>();
+            this.NewsArticles = new HashSet<NewsArticle>();
+            this.NewsFeeds = new HashSet<NewsFeed>();
         }
     
-        public int ParentId { get; set; }
-        public string ParentName { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public Nullable<int> ParentId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NewsCategory> NewsCategories { get; set; }
+        public virtual ICollection<NewsArticle> NewsArticles { get; set; }
+        public virtual ParentCategory ParentCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NewsFeed> NewsFeeds { get; set; }
     }
 }
