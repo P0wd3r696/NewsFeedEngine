@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewsFeedEngine.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,9 +7,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Schema;
-using HtmlAgilityPack;
-using NewsFeedEngine.Utilities;
 
 namespace NewsFeedEngine.Models
 {
@@ -37,15 +35,15 @@ namespace NewsFeedEngine.Models
                             rss.CategoryId = categoryId;
                             rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                 .ProviderId;
-                            rss.Summary = rss.Summary.Trim();
-                            rss.Title = splittedRssTitle[0].Trim();
+                            rss.Summary = EncodeText(rss.Summary.Trim());
+                            rss.Title = EncodeText(splittedRssTitle[0].Trim());
                             _context.NewsArticles.Add(rss);
                             _context.SaveChanges();
                             Console.WriteLine($"Title: {rss.Title}");
                         }
                         catch (Exception e)
                         {
-                            Console.Write("An error has occured.");
+                            Console.Write(e.Message + " An error has occured.");
                         }
                     }
                     else
@@ -55,14 +53,14 @@ namespace NewsFeedEngine.Models
                             rss.CategoryId = categoryId;
                             rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                 .ProviderId;
-                            rss.Title = splittedRssTitle[1].Trim();
+                            rss.Title = EncodeText(splittedRssTitle[1].Trim());
                             _context.NewsArticles.Add(rss);
                             _context.SaveChanges();
                             Console.WriteLine($"Title: {rss.Title}");
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine("An error has occured");
+                            Console.Write(e.Message + " An error has occured.");
                         }
                     }
                 }
@@ -88,16 +86,15 @@ namespace NewsFeedEngine.Models
                                   Summary = item.Elements().First(i => i.Name.LocalName == "content").Value,
                                   Url = item.Elements().First(i => i.Name.LocalName == "link").Attribute("href")?.Value,
                                   Picture = item.Elements().First(i => i.Name.LocalName == "content").Attribute("src")?.Value,
-                                  Title = item.Elements().First(i => i.Name.LocalName == "title").Value//,
-                                  //pubDate = Convert.ToDateTime(item.Elements().First(i => i.Name.LocalName == "updated").Value)
+                                  Title = item.Elements().First(i => i.Name.LocalName == "title").Value,
+                                  CreatedDate =
+                                      Convert.ToDateTime(item.Elements().First(i => i.Name.LocalName == "updated").Value)
                               };
                 SaveToDbAtom(entries, rssData, categoryId);
                 Console.WriteLine("End!");
             }
             catch (XmlException ex)
             {
-
-                //return new List<NewsArticle>();
                 Console.WriteLine("An error has occured" + ex.Message);
             }
         }

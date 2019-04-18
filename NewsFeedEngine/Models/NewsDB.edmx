@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NewsDBNoncedoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NewsDBNoncedoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -93,6 +93,7 @@
           <Property Name="Picture" Type="varchar(max)" />
           <Property Name="Url" Type="varchar(max)" />
           <Property Name="CategoryId" Type="int" />
+          <Property Name="CreatedDate" Type="date" />
         </EntityType>
         <EntityType Name="NewsCategory">
           <Key>
@@ -258,91 +259,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="deleteCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="deleteNewsArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="deleteNewsCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="deleteNewsFeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="deleteNewsProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="deleteParentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="insertAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="username" Type="varchar" Mode="In" />
-          <Parameter Name="password" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="insertCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="name" Type="varchar" Mode="In" />
-          <Parameter Name="logo" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="insertNewsArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="title" Type="varchar(max)" Mode="In" />
-          <Parameter Name="summary" Type="varchar(max)" Mode="In" />
-          <Parameter Name="providerId" Type="int" Mode="In" />
-          <Parameter Name="picture" Type="varchar(max)" Mode="In" />
-          <Parameter Name="url" Type="varchar" Mode="In" />
-          <Parameter Name="categoryid" Type="int" Mode="In" />
-        </Function>
-        <Function Name="insertNewsCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="name" Type="varchar" Mode="In" />
-          <Parameter Name="parentId" Type="int" Mode="In" />
-        </Function>
-        <Function Name="insertNewsFeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="providerId" Type="int" Mode="In" />
-          <Parameter Name="rssUrl" Type="varchar(max)" Mode="In" />
-          <Parameter Name="categoryId" Type="int" Mode="In" />
-          <Parameter Name="image" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="insertNewsProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="name" Type="varchar" Mode="In" />
-          <Parameter Name="url" Type="varchar" Mode="In" />
-          <Parameter Name="countryId" Type="int" Mode="In" />
-        </Function>
-        <Function Name="insertParentCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="parentname" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="selectActiveNewsFeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="updateCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="name" Type="varchar" Mode="In" />
-          <Parameter Name="logo" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="updateNewsArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="title" Type="varchar(max)" Mode="In" />
-          <Parameter Name="summary" Type="varchar(max)" Mode="In" />
-          <Parameter Name="providerId" Type="int" Mode="In" />
-          <Parameter Name="picture" Type="varchar(max)" Mode="In" />
-          <Parameter Name="url" Type="varchar" Mode="In" />
-          <Parameter Name="categoryid" Type="int" Mode="In" />
-        </Function>
-        <Function Name="updateNewsCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="name" Type="varchar" Mode="In" />
-          <Parameter Name="parentId" Type="int" Mode="In" />
-        </Function>
-        <Function Name="updateNewsFeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="providerId" Type="int" Mode="In" />
-          <Parameter Name="rssUrl" Type="varchar(max)" Mode="In" />
-          <Parameter Name="categoryId" Type="int" Mode="In" />
-          <Parameter Name="image" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="updateNewsProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="name" Type="varchar" Mode="In" />
-          <Parameter Name="url" Type="varchar" Mode="In" />
-          <Parameter Name="countryId" Type="int" Mode="In" />
-        </Function>
         <EntityContainer Name="NewsDBNoncedoModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
@@ -398,316 +314,28 @@
             <End Role="NewsProvider" EntitySet="NewsProvider" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NewsDBNoncedoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="AdminId" />
-          </Key>
-          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-        </EntityType>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="CountryId" />
-          </Key>
-          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NewsProviders" Relationship="Self.FK_NewsProvider_Country" FromRole="Country" ToRole="NewsProvider" />
-        </EntityType>
-        <EntityType Name="NewsArticle">
-          <Key>
-            <PropertyRef Name="ArticleId" />
-          </Key>
-          <Property Name="ArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ProviderId" Type="Int32" />
-          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryId" Type="Int32" />
-          <NavigationProperty Name="NewsCategory" Relationship="Self.FK_NewsArticle_NewsCategory" FromRole="NewsArticle" ToRole="NewsCategory" />
-          <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsArticle_NewsProvider" FromRole="NewsArticle" ToRole="NewsProvider" />
-        </EntityType>
-        <EntityType Name="NewsCategory">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentId" Type="Int32" />
-          <NavigationProperty Name="NewsArticles" Relationship="Self.FK_NewsArticle_NewsCategory" FromRole="NewsCategory" ToRole="NewsArticle" />
-          <NavigationProperty Name="ParentCategory" Relationship="Self.FK_NewsCategory_ParentCategory" FromRole="NewsCategory" ToRole="ParentCategory" />
-          <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsCategory" ToRole="NewsFeed" />
-        </EntityType>
-        <EntityType Name="NewsFeed">
-          <Key>
-            <PropertyRef Name="NewsFeedId" />
-          </Key>
-          <Property Name="NewsFeedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProviderId" Type="Int32" />
-          <Property Name="RssUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
-          <Property Name="CategoryId" Type="Int32" />
-          <NavigationProperty Name="NewsCategory" Relationship="Self.FK_NewsFeed_NewsCatergory" FromRole="NewsFeed" ToRole="NewsCategory" />
-          <NavigationProperty Name="NewsProvider" Relationship="Self.FK_NewsFeed_NewsProvider" FromRole="NewsFeed" ToRole="NewsProvider" />
-        </EntityType>
-        <EntityType Name="NewsProvider">
-          <Key>
-            <PropertyRef Name="ProviderId" />
-          </Key>
-          <Property Name="ProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CountryId" Type="Int32" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_NewsProvider_Country" FromRole="NewsProvider" ToRole="Country" />
-          <NavigationProperty Name="NewsArticles" Relationship="Self.FK_NewsArticle_NewsProvider" FromRole="NewsProvider" ToRole="NewsArticle" />
-          <NavigationProperty Name="NewsFeeds" Relationship="Self.FK_NewsFeed_NewsProvider" FromRole="NewsProvider" ToRole="NewsFeed" />
-        </EntityType>
-        <EntityType Name="ParentCategory">
-          <Key>
-            <PropertyRef Name="ParentId" />
-          </Key>
-          <Property Name="ParentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ParentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NewsCategories" Relationship="Self.FK_NewsCategory_ParentCategory" FromRole="ParentCategory" ToRole="NewsCategory" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NewsProvider_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-          <End Role="NewsProvider" Type="Self.NewsProvider" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="CountryId" />
-            </Principal>
-            <Dependent Role="NewsProvider">
-              <PropertyRef Name="CountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NewsArticle_NewsCategory">
-          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="0..1" />
-          <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NewsCategory">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="NewsArticle">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NewsArticle_NewsProvider">
-          <End Role="NewsProvider" Type="Self.NewsProvider" Multiplicity="0..1" />
-          <End Role="NewsArticle" Type="Self.NewsArticle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NewsProvider">
-              <PropertyRef Name="ProviderId" />
-            </Principal>
-            <Dependent Role="NewsArticle">
-              <PropertyRef Name="ProviderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NewsCategory_ParentCategory">
-          <End Role="ParentCategory" Type="Self.ParentCategory" Multiplicity="0..1" />
-          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ParentCategory">
-              <PropertyRef Name="ParentId" />
-            </Principal>
-            <Dependent Role="NewsCategory">
-              <PropertyRef Name="ParentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NewsFeed_NewsCatergory">
-          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="0..1" />
-          <End Role="NewsFeed" Type="Self.NewsFeed" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NewsCategory">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="NewsFeed">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NewsFeed_NewsProvider">
-          <End Role="NewsProvider" Type="Self.NewsProvider" Multiplicity="0..1" />
-          <End Role="NewsFeed" Type="Self.NewsFeed" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NewsProvider">
-              <PropertyRef Name="ProviderId" />
-            </Principal>
-            <Dependent Role="NewsFeed">
-              <PropertyRef Name="ProviderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="NewsDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="Admins" EntityType="Self.Admin" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Countries" EntityType="Self.Country" />
-          <EntitySet Name="NewsArticles" EntityType="Self.NewsArticle" />
-          <EntitySet Name="NewsCategories" EntityType="Self.NewsCategory" />
-          <EntitySet Name="NewsFeeds" EntityType="Self.NewsFeed" />
-          <EntitySet Name="NewsProviders" EntityType="Self.NewsProvider" />
-          <EntitySet Name="ParentCategories" EntityType="Self.ParentCategory" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsProvider_Country" Association="Self.FK_NewsProvider_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="NewsProvider" EntitySet="NewsProviders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsArticle_NewsCategory" Association="Self.FK_NewsArticle_NewsCategory">
-            <End Role="NewsCategory" EntitySet="NewsCategories" />
-            <End Role="NewsArticle" EntitySet="NewsArticles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsArticle_NewsProvider" Association="Self.FK_NewsArticle_NewsProvider">
-            <End Role="NewsProvider" EntitySet="NewsProviders" />
-            <End Role="NewsArticle" EntitySet="NewsArticles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsCategory_ParentCategory" Association="Self.FK_NewsCategory_ParentCategory">
-            <End Role="ParentCategory" EntitySet="ParentCategories" />
-            <End Role="NewsCategory" EntitySet="NewsCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsFeed_NewsCatergory" Association="Self.FK_NewsFeed_NewsCatergory">
-            <End Role="NewsCategory" EntitySet="NewsCategories" />
-            <End Role="NewsFeed" EntitySet="NewsFeeds" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NewsFeed_NewsProvider" Association="Self.FK_NewsFeed_NewsProvider">
-            <End Role="NewsProvider" EntitySet="NewsProviders" />
-            <End Role="NewsFeed" EntitySet="NewsFeeds" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
           <FunctionImport Name="deleteCountry">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteNewsArticle">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteNewsCategory">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteNewsFeed">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteNewsProvider">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteParentCategory">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="insertAdmin">
             <Parameter Name="username" Mode="In" Type="String" />
@@ -741,7 +369,7 @@
             <Parameter Name="countryId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="insertParentCategory">
-            <Parameter Name="parentname" Mode="In" Type="String" />
+          <Parameter Name="parentname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="selectActiveNewsFeed" ReturnType="Collection(NewsDBNoncedoModel.selectActiveNewsFeed_Result)" />
           <FunctionImport Name="updateCountry">
@@ -776,7 +404,55 @@
             <Parameter Name="url" Mode="In" Type="String" />
             <Parameter Name="countryId" Mode="In" Type="Int32" />
           </FunctionImport>
-        </EntityContainer>
+          <EntitySet Name="C__MigrationHistory" EntityType="NewsDBNoncedoModel.C__MigrationHistory" />
+          <EntitySet Name="Admins" EntityType="NewsDBNoncedoModel.Admin" />
+          <EntitySet Name="AspNetRoles" EntityType="NewsDBNoncedoModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="NewsDBNoncedoModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="NewsDBNoncedoModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="NewsDBNoncedoModel.AspNetUser" />
+          <EntitySet Name="Countries" EntityType="NewsDBNoncedoModel.Country" />
+          <EntitySet Name="NewsArticles" EntityType="NewsDBNoncedoModel.NewsArticle" />
+          <EntitySet Name="NewsCategories" EntityType="NewsDBNoncedoModel.NewsCategory" />
+          <EntitySet Name="NewsFeeds" EntityType="NewsDBNoncedoModel.NewsFeed" />
+          <EntitySet Name="NewsProviders" EntityType="NewsDBNoncedoModel.NewsProvider" />
+          <EntitySet Name="ParentCategories" EntityType="NewsDBNoncedoModel.ParentCategory" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="NewsDBNoncedoModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="NewsDBNoncedoModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsProvider_Country" Association="NewsDBNoncedoModel.FK_NewsProvider_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="NewsProvider" EntitySet="NewsProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsArticle_NewsCategory" Association="NewsDBNoncedoModel.FK_NewsArticle_NewsCategory">
+            <End Role="NewsCategory" EntitySet="NewsCategories" />
+            <End Role="NewsArticle" EntitySet="NewsArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsArticle_NewsProvider" Association="NewsDBNoncedoModel.FK_NewsArticle_NewsProvider">
+            <End Role="NewsProvider" EntitySet="NewsProviders" />
+            <End Role="NewsArticle" EntitySet="NewsArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsCategory_ParentCategory" Association="NewsDBNoncedoModel.FK_NewsCategory_ParentCategory">
+            <End Role="ParentCategory" EntitySet="ParentCategories" />
+            <End Role="NewsCategory" EntitySet="NewsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsFeed_NewsCatergory" Association="NewsDBNoncedoModel.FK_NewsFeed_NewsCatergory">
+            <End Role="NewsCategory" EntitySet="NewsCategories" />
+            <End Role="NewsFeed" EntitySet="NewsFeeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsFeed_NewsProvider" Association="NewsDBNoncedoModel.FK_NewsFeed_NewsProvider">
+            <End Role="NewsProvider" EntitySet="NewsProviders" />
+            <End Role="NewsFeed" EntitySet="NewsFeeds" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="NewsDBNoncedoModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          </EntityContainer>
         <ComplexType Name="selectActiveNewsFeed_Result">
           <Property Type="Int32" Name="NewsFeedId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
@@ -785,179 +461,389 @@
           <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
           <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="50" />
         </ComplexType>
-      </Schema>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="NewsDBNoncedoModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="NewsDBNoncedoModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="NewsDBNoncedoModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="NewsDBNoncedoModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="NewsDBNoncedoModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="NewsDBNoncedoModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NewsProviders" Relationship="NewsDBNoncedoModel.FK_NewsProvider_Country" FromRole="Country" ToRole="NewsProvider" />
+        </EntityType>
+        <EntityType Name="NewsArticle">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="NewsCategory" Relationship="NewsDBNoncedoModel.FK_NewsArticle_NewsCategory" FromRole="NewsArticle" ToRole="NewsCategory" />
+          <NavigationProperty Name="NewsProvider" Relationship="NewsDBNoncedoModel.FK_NewsArticle_NewsProvider" FromRole="NewsArticle" ToRole="NewsProvider" />
+        </EntityType>
+        <EntityType Name="NewsCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <NavigationProperty Name="NewsArticles" Relationship="NewsDBNoncedoModel.FK_NewsArticle_NewsCategory" FromRole="NewsCategory" ToRole="NewsArticle" />
+          <NavigationProperty Name="ParentCategory" Relationship="NewsDBNoncedoModel.FK_NewsCategory_ParentCategory" FromRole="NewsCategory" ToRole="ParentCategory" />
+          <NavigationProperty Name="NewsFeeds" Relationship="NewsDBNoncedoModel.FK_NewsFeed_NewsCatergory" FromRole="NewsCategory" ToRole="NewsFeed" />
+        </EntityType>
+        <EntityType Name="NewsFeed">
+          <Key>
+            <PropertyRef Name="NewsFeedId" />
+          </Key>
+          <Property Name="NewsFeedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="RssUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="NewsCategory" Relationship="NewsDBNoncedoModel.FK_NewsFeed_NewsCatergory" FromRole="NewsFeed" ToRole="NewsCategory" />
+          <NavigationProperty Name="NewsProvider" Relationship="NewsDBNoncedoModel.FK_NewsFeed_NewsProvider" FromRole="NewsFeed" ToRole="NewsProvider" />
+        </EntityType>
+        <EntityType Name="NewsProvider">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="NewsDBNoncedoModel.FK_NewsProvider_Country" FromRole="NewsProvider" ToRole="Country" />
+          <NavigationProperty Name="NewsArticles" Relationship="NewsDBNoncedoModel.FK_NewsArticle_NewsProvider" FromRole="NewsProvider" ToRole="NewsArticle" />
+          <NavigationProperty Name="NewsFeeds" Relationship="NewsDBNoncedoModel.FK_NewsFeed_NewsProvider" FromRole="NewsProvider" ToRole="NewsFeed" />
+        </EntityType>
+        <EntityType Name="ParentCategory">
+          <Key>
+            <PropertyRef Name="ParentId" />
+          </Key>
+          <Property Name="ParentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NewsCategories" Relationship="NewsDBNoncedoModel.FK_NewsCategory_ParentCategory" FromRole="ParentCategory" ToRole="NewsCategory" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="NewsDBNoncedoModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NewsDBNoncedoModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="NewsDBNoncedoModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NewsDBNoncedoModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsProvider_Country">
+          <End Type="NewsDBNoncedoModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="NewsDBNoncedoModel.NewsProvider" Role="NewsProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="NewsProvider">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsArticle_NewsCategory">
+          <End Type="NewsDBNoncedoModel.NewsCategory" Role="NewsCategory" Multiplicity="0..1" />
+          <End Type="NewsDBNoncedoModel.NewsArticle" Role="NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsArticle_NewsProvider">
+          <End Type="NewsDBNoncedoModel.NewsProvider" Role="NewsProvider" Multiplicity="0..1" />
+          <End Type="NewsDBNoncedoModel.NewsArticle" Role="NewsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsProvider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="NewsArticle">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsCategory_ParentCategory">
+          <End Type="NewsDBNoncedoModel.ParentCategory" Role="ParentCategory" Multiplicity="0..1" />
+          <End Type="NewsDBNoncedoModel.NewsCategory" Role="NewsCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentCategory">
+              <PropertyRef Name="ParentId" />
+            </Principal>
+            <Dependent Role="NewsCategory">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsFeed_NewsCatergory">
+          <End Type="NewsDBNoncedoModel.NewsCategory" Role="NewsCategory" Multiplicity="0..1" />
+          <End Type="NewsDBNoncedoModel.NewsFeed" Role="NewsFeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="NewsFeed">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsFeed_NewsProvider">
+          <End Type="NewsDBNoncedoModel.NewsProvider" Role="NewsProvider" Multiplicity="0..1" />
+          <End Type="NewsDBNoncedoModel.NewsFeed" Role="NewsFeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsProvider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="NewsFeed">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="NewsDBNoncedoModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="NewsDBNoncedoModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NewsDBNoncedoModelStoreContainer" CdmEntityContainer="NewsDBEntities">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewsDBNoncedoModelStoreContainer" CdmEntityContainer="NewsDBEntities">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
-                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NewsArticles">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.NewsArticle">
               <MappingFragment StoreEntitySet="NewsArticle">
-                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Summary" ColumnName="Summary" />
-                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NewsCategories">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.NewsCategory">
               <MappingFragment StoreEntitySet="NewsCategory">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NewsFeeds">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.NewsFeed">
               <MappingFragment StoreEntitySet="NewsFeed">
-                <ScalarProperty Name="NewsFeedId" ColumnName="NewsFeedId" />
-                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
-                <ScalarProperty Name="RssUrl" ColumnName="RssUrl" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="RssUrl" ColumnName="RssUrl" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="NewsFeedId" ColumnName="NewsFeedId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NewsProviders">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.NewsProvider">
               <MappingFragment StoreEntitySet="NewsProvider">
-                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ParentCategories">
             <EntityTypeMapping TypeName="NewsDBNoncedoModel.ParentCategory">
               <MappingFragment StoreEntitySet="ParentCategory">
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="NewsDBNoncedoModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
+            <EndProperty Name="AspNetUser">
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="deleteCountry" FunctionName="NewsDBNoncedoModel.Store.deleteCountry" />
-          <FunctionImportMapping FunctionImportName="deleteNewsArticle" FunctionName="NewsDBNoncedoModel.Store.deleteNewsArticle" />
-          <FunctionImportMapping FunctionImportName="deleteNewsCategory" FunctionName="NewsDBNoncedoModel.Store.deleteNewsCategory" />
-          <FunctionImportMapping FunctionImportName="deleteNewsFeed" FunctionName="NewsDBNoncedoModel.Store.deleteNewsFeed" />
-          <FunctionImportMapping FunctionImportName="deleteNewsProvider" FunctionName="NewsDBNoncedoModel.Store.deleteNewsProvider" />
-          <FunctionImportMapping FunctionImportName="deleteParentCategory" FunctionName="NewsDBNoncedoModel.Store.deleteParentCategory" />
-          <FunctionImportMapping FunctionImportName="insertAdmin" FunctionName="NewsDBNoncedoModel.Store.insertAdmin" />
-          <FunctionImportMapping FunctionImportName="insertCountry" FunctionName="NewsDBNoncedoModel.Store.insertCountry" />
-          <FunctionImportMapping FunctionImportName="insertNewsArticle" FunctionName="NewsDBNoncedoModel.Store.insertNewsArticle" />
-          <FunctionImportMapping FunctionImportName="insertNewsCategory" FunctionName="NewsDBNoncedoModel.Store.insertNewsCategory" />
-          <FunctionImportMapping FunctionImportName="insertNewsFeed" FunctionName="NewsDBNoncedoModel.Store.insertNewsFeed" />
-          <FunctionImportMapping FunctionImportName="insertNewsProvider" FunctionName="NewsDBNoncedoModel.Store.insertNewsProvider" />
-          <FunctionImportMapping FunctionImportName="insertParentCategory" FunctionName="NewsDBNoncedoModel.Store.insertParentCategory" />
-          <FunctionImportMapping FunctionImportName="selectActiveNewsFeed" FunctionName="NewsDBNoncedoModel.Store.selectActiveNewsFeed">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="NewsDBNoncedoModel.selectActiveNewsFeed_Result">
-                <ScalarProperty Name="NewsFeedId" ColumnName="NewsFeedId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="RssUrl" ColumnName="RssUrl" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="updateCountry" FunctionName="NewsDBNoncedoModel.Store.updateCountry" />
-          <FunctionImportMapping FunctionImportName="updateNewsArticle" FunctionName="NewsDBNoncedoModel.Store.updateNewsArticle" />
-          <FunctionImportMapping FunctionImportName="updateNewsCategory" FunctionName="NewsDBNoncedoModel.Store.updateNewsCategory" />
-          <FunctionImportMapping FunctionImportName="updateNewsFeed" FunctionName="NewsDBNoncedoModel.Store.updateNewsFeed" />
-          <FunctionImportMapping FunctionImportName="updateNewsProvider" FunctionName="NewsDBNoncedoModel.Store.updateNewsProvider" />
         </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -971,7 +857,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using HtmlAgilityPack;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using HtmlAgilityPack;
 
 namespace NewsFeedEngine.Models
 {
@@ -46,7 +46,6 @@ namespace NewsFeedEngine.Models
                 if (htmlDoc.DocumentNode.SelectNodes("//img[@src]") != null)
                 {
                     newsArticle.Picture = htmlDoc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()?.Attributes[0].Value;
-
                 }
                 newsArticle.Summary = Regex.Replace(htmlDoc.DocumentNode.SelectNodes("//p")[0].InnerHtml, @"\t|\n|\r", "").Trim();
                 return newsArticle.Picture;

@@ -1,12 +1,11 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using NewsFeedEngine.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using HtmlAgilityPack;
-using NewsFeedEngine.Utilities;
 
 namespace NewsFeedEngine.Models
 {
@@ -14,6 +13,7 @@ namespace NewsFeedEngine.Models
     {
         private readonly NewsDBEntities _context = new NewsDBEntities();
         private readonly PictureHandler _pictureHandler = new PictureHandler();
+
         public void SaveToDb(IEnumerable<NewsArticle> rssFeed, string rssData, int? categoryId)
         {
             foreach (var rss in rssFeed)
@@ -26,28 +26,35 @@ namespace NewsFeedEngine.Models
                     if (splittedRssTitle.Length == 1)
                     {
                         var splittedTitle = splittedRssTitle[0];
-                        if (rss.Summary == string.Empty) continue;  
+                        if (rss.Summary == string.Empty) continue;
                         try
                         {
                             if (rss.Summary.Contains("<img"))
                             {
                                 var doc = new HtmlDocument();
                                 doc.LoadHtml(rss.Summary);
-                                rss.Summary = doc.DocumentNode.ChildNodes["p"].InnerText;
-                                rss.Picture = doc.DocumentNode.FirstChild.FirstChild.Attributes["src"].Value;
-                                //Regex r = new Regex(@"https://.+?/>");
-                                //var a = r.Matches(rss.Summary, 0);
-                                //var pictureMatch = Regex.Match(rss.Summary, @"(?<=\bsrc=\"")[^\""]*");
-                                //var summaryMatch = Regex.Match(rss.Summary, @"(<p.*?> (.*?)<\\/p>");
+                                rss.Summary = EncodeText(doc.DocumentNode.SelectNodes("//p").FirstOrDefault()?.InnerText);
+                                //rss.Picture = EncodeText(doc.DocumentNode.ChildNodes["p"]?.ChildNodes["a"].Attributes["src"].Value);
+                                //rss.Picture = EncodeText(doc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()
+                                //    ?.Attributes[0].Value);
+                            }
+                            else if (rss.Summary.Contains("<p>") || rss.Summary.Contains("<a href"))
+                            {
+                                var doc = new HtmlDocument();
+                                doc.LoadHtml(rss.Summary);
+                                rss.Summary = EncodeText(doc.DocumentNode.SelectNodes("//p").FirstOrDefault()?.InnerText);
+                                //rss.Picture = doc.DocumentNode.ChildNodes["p"].ChildNodes["a"].Attributes["src"].Value;
+                                //rss.Picture = EncodeText(doc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()
+                                //?.Attributes["src"].Value);
                             }
 
-                            if (_context.NewsArticles.ToList().Exists(x => !x.Title.Contains(splittedTitle)))
+                            if (_context.NewsArticles.Any(x => !x.Title.Contains(splittedTitle)))
                             {
                                 //rss.Picture =null;
                                 rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                     .ProviderId;
                                 rss.CategoryId = categoryId;
-                                rss.Title = splittedRssTitle[0].Trim();
+                                rss.Title = EncodeText(splittedRssTitle[0].Trim());
                                 //rss.pubDate = rss.pubDate;
                                 _context.NewsArticles.Add(rss);
                                 _context.SaveChanges();
@@ -56,7 +63,7 @@ namespace NewsFeedEngine.Models
                         }
                         catch (Exception e)
                         {
-                            Console.Write("An error has occured.");
+                            Console.Write(e.Message + " An error has occured.");
                         }
                     }
                     else
@@ -65,27 +72,26 @@ namespace NewsFeedEngine.Models
                         {
                             rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                 .ProviderId;
-
                             rss.CategoryId = categoryId;
-                            rss.Title = splittedRssTitle[1].Trim();
+                            rss.Title = EncodeText(splittedRssTitle[1].Trim());
                             _context.NewsArticles.Add(rss);
                             _context.SaveChanges();
                             Console.WriteLine($"Title: {rss.Title}");
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine("An error has occured");
+                            Console.Write(e.Message + " An error has occured.");
                         }
                     }
                 }
         }
-
 
         private string ChangeTextToHtml(string rssData)
         {
             var xml = WebUtility.HtmlDecode(rssData);
             return xml;
         }
+
         public string EncodeText(string rssTitle)
         {
             var bytes = Encoding.Default.GetBytes(rssTitle);
@@ -102,8 +108,8 @@ namespace NewsFeedEngine.Models
                     Title = (string)x.Element("title"),
                     Url = (string)x.Element("link"),
                     Summary = (string)x.Element("description"),
-                    Picture = (string)x.Element("image")?.Element("url")//,
-                    //pubDate = (DateTime)x.Element("pubDate")
+                    Picture = (string)x.Element("image")?.Element("url"),
+                    CreatedDate = (DateTime)x.Element("pubDate")
                 });
 
             SaveToDb(rssFeedData, rssData, categoryId);

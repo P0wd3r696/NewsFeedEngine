@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
+using NewsFeedEngine.Models;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using NewsFeedEngine.Models;
 
 namespace NewsFeedEngine
 {
@@ -15,9 +9,10 @@ namespace NewsFeedEngine
     {
         private static readonly NewsFeedEngine.Models.NewsDBEntities Context = new NewsDBEntities();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             GetRssFeed();
+            Console.ReadLine();
         }
 
         public static bool IsRssFeed(string rssData)
@@ -29,11 +24,12 @@ namespace NewsFeedEngine
 
             return false;
         }
+
         public static void GetRssFeed()
         {
             RssHandler rssHandler = new RssHandler();
             AtomHandler atomHandler = new AtomHandler();
-            foreach (var feed in Context.NewsFeeds.ToList())
+            foreach (var feed in Context.NewsFeeds.Where(x => x.Active == true).ToList())
             {
                 var rssLink = feed.RssUrl;
                 WebClient client = new WebClient();
@@ -52,7 +48,5 @@ namespace NewsFeedEngine
                 }
             }
         }
-
-
     }
 }

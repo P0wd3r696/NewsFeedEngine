@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <link href="https://martinfowler.com/feed.atom" rel="self"/>
-  <link href="https://martinfowler.com"/>
+  <link href="https://martinfowler.com/feed.atom" rel="self" />
+  <link href="https://martinfowler.com" />
   <id>https://martinfowler.com/feed.atom</id>
   <title>Martin Fowler</title>
   <subtitle>Master feed of news and updates from martinfowler.com</subtitle>
@@ -13,10 +13,10 @@
   <updated>2019-04-08T09:40:00-04:00</updated>
   <entry>
     <title>Passing execution context to domain probes</title>
-    <link href="https://martinfowler.com/articles/domain-oriented-observability.html#IncludingExecutionContext"/>
+    <link href="https://martinfowler.com/articles/domain-oriented-observability.html#IncludingExecutionContext" />
     <updated>2019-04-08T09:40:00-04:00</updated>
     <id>tag:martinfowler.com,2019-04-08:Passing-execution-context-to-domain-probes</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html#IncludingExecutionContext'&gt;&lt;img src = 'https://martinfowler.com/articles/domain-oriented-observability/twitter-card.png' width = '350'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -30,10 +30,10 @@
 
   <entry>
     <title>Testing Domain Probes</title>
-    <link href="https://martinfowler.com/articles/domain-oriented-observability.html#TestingObservability"/>
+    <link href="https://martinfowler.com/articles/domain-oriented-observability.html#TestingObservability" />
     <updated>2019-04-03T12:23:00-04:00</updated>
     <id>tag:martinfowler.com,2019-04-03:Testing-Domain-Probes</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/domain-oriented-observability.html#TestingObservability'&gt;&lt;img src = 'https://martinfowler.com/articles/domain-oriented-observability/twitter-card.png' width = '350'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -46,7 +46,7 @@
 
   <entry>
     <title>Domain-Oriented Observability</title>
-    <link href="https://martinfowler.com/articles/domain-oriented-observability.html"/>
+    <link href="https://martinfowler.com/articles/domain-oriented-observability.html" />
     <updated>2019-04-02T09:41:00-04:00</updated>
     <id>tag:martinfowler.com,2019-04-02:Domain-Oriented-Observability</id>
     <content type="html">
@@ -64,10 +64,10 @@
 
   <entry>
     <title>Bliki: LockInCost</title>
-    <link href="https://martinfowler.com/bliki/LockInCost.html"/>
+    <link href="https://martinfowler.com/bliki/LockInCost.html" />
     <updated>2019-03-05T08:27:00-05:00</updated>
     <id>https://martinfowler.com/bliki/LockInCost.html</id>
-    <category term="bliki"/>
+    <category term="bliki" />
     <author>
       <name>Wisen Tanasa</name>
       <uri>https://github.com/ceilfors</uri>
@@ -148,7 +148,7 @@
 
   <entry>
     <title>Fixing attribute completion in Emacs nxml-mode</title>
-    <link href="https://martinfowler.com/articles/emacs-nxml-completion.html"/>
+    <link href="https://martinfowler.com/articles/emacs-nxml-completion.html" />
     <updated>2019-02-20T18:10:00-05:00</updated>
     <id>tag:martinfowler.com,2019-02-20:Fixing-attribute-completion-in-Emacs-nxml-mode</id>
     <content type="html">
@@ -164,7 +164,7 @@
 
   <entry>
     <title>Repair to &#x201C;Using OAuth for a simple command line script to access Google's data&#x201D;</title>
-    <link href="https://martinfowler.com/articles/command-line-google.html"/>
+    <link href="https://martinfowler.com/articles/command-line-google.html" />
     <updated>2019-01-22T09:11:00-05:00</updated>
     <id>tag:martinfowler.com,2019-01-22:Repair-to--Using-OAuth-for-a-simple-command-line-script-to-access-Google-s-data-</id>
     <content type="html">
@@ -183,7 +183,7 @@
 
   <entry>
     <title>photostream 119</title>
-    <link href="https://martinfowler.com/photos/119.html"/>
+    <link href="https://martinfowler.com/photos/119.html" />
     <updated>2019-01-19T15:12:00-05:00</updated>
     <id>tag:martinfowler.com,2019-01-19:photostream-119</id>
     <content type="html">
@@ -197,10 +197,10 @@
 
   <entry>
     <title>Kindle edition of Refactoring now available from Amazon</title>
-    <link href="https://martinfowler.com/books/refactoring.html"/>
+    <link href="https://martinfowler.com/books/refactoring.html" />
     <updated>2018-12-17T15:32:00-05:00</updated>
     <id>tag:martinfowler.com,2018-12-17:Kindle-edition-of-Refactoring-now-available-from-Amazon</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;p&gt;Amazon is now selling the Kindle edition of Refactoring. As I write
       this, it's a touch more expensive than the hardback since they are currently
@@ -212,7 +212,7 @@
 
   <entry>
     <title>Face to Face with the Book</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#face-to-face"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#face-to-face" />
     <updated>2018-12-10T13:51:00-05:00</updated>
     <id>tag:martinfowler.com,2018-12-10:Face-to-Face-with-the-Book</id>
     <content type="html">
@@ -227,7 +227,7 @@
 
   <entry>
     <title>Refactoring released on informit</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#released-on-informit"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#released-on-informit" />
     <updated>2018-11-26T06:08:00-05:00</updated>
     <id>tag:martinfowler.com,2018-11-26:Refactoring-released-on-informit</id>
     <content type="html">
@@ -243,10 +243,10 @@
 
   <entry>
     <title>Pre-ordered Refactoring books are now shipping</title>
-    <link href="https://martinfowler.com/articles/20181121-refactoring-going-out.html"/>
+    <link href="https://martinfowler.com/articles/20181121-refactoring-going-out.html" />
     <updated>2018-11-21T11:42:00-05:00</updated>
     <id>tag:martinfowler.com,2018-11-21:Pre-ordered-Refactoring-books-are-now-shipping</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/20181121-refactoring-going-out.html'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -265,10 +265,10 @@
 
   <entry>
     <title>Refactoring 2nd Ed printed</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#books-are-printed"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#books-are-printed" />
     <updated>2018-11-19T15:20:00-05:00</updated>
     <id>tag:martinfowler.com,2018-11-19:Refactoring-2nd-Ed-printed</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#books-are-printed'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -287,7 +287,7 @@
 
   <entry>
     <title>Updated refactoring.com for second edition</title>
-    <link href="https://martinfowler.com/articles/201811-update-refactoring-com.html"/>
+    <link href="https://martinfowler.com/articles/201811-update-refactoring-com.html" />
     <updated>2018-11-19T11:45:00-05:00</updated>
     <id>tag:martinfowler.com,2018-11-19:Updated-refactoring-com-for-second-edition</id>
     <content type="html">
@@ -304,7 +304,7 @@
 
   <entry>
     <title>photostream 118</title>
-    <link href="https://martinfowler.com/photos/118.html"/>
+    <link href="https://martinfowler.com/photos/118.html" />
     <updated>2018-10-27T10:22:00-04:00</updated>
     <id>tag:martinfowler.com,2018-10-27:photostream-118</id>
     <content type="html">
@@ -318,7 +318,7 @@
 
   <entry>
     <title>Working on the Web Edition of Refactoring 2nd Ed</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#working-on-the-web-edition"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#working-on-the-web-edition" />
     <updated>2018-10-20T17:57:00-04:00</updated>
     <id>tag:martinfowler.com,2018-10-20:Working-on-the-Web-Edition-of-Refactoring-2nd-Ed</id>
     <content type="html">
@@ -334,10 +334,10 @@
 
   <entry>
     <title>Refactoring 2nd Ed sent to printers</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#gone-to-the-printers"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#gone-to-the-printers" />
     <updated>2018-09-28T17:39:00-04:00</updated>
     <id>tag:martinfowler.com,2018-09-28:Refactoring-2nd-Ed-sent-to-printers</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#gone-to-the-printers'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -352,7 +352,7 @@
 
   <entry>
     <title>Four additions to my list of Eurogames</title>
-    <link href="https://martinfowler.com/articles/eurogames/"/>
+    <link href="https://martinfowler.com/articles/eurogames/" />
     <updated>2018-09-05T11:00:00-04:00</updated>
     <id>tag:martinfowler.com,2018-09-05:Four-additions-to-my-list-of-Eurogames</id>
     <content type="html">
@@ -368,7 +368,7 @@
 
   <entry>
     <title>Changes for 2nd Edition of Refactoring</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-changes.html"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-changes.html" />
     <updated>2018-09-05T07:51:00-04:00</updated>
     <id>tag:martinfowler.com,2018-09-05:Changes-for-2nd-Edition-of-Refactoring</id>
     <content type="html">
@@ -383,7 +383,7 @@
 
   <entry>
     <title>photostream 117</title>
-    <link href="https://martinfowler.com/photos/117.html"/>
+    <link href="https://martinfowler.com/photos/117.html" />
     <updated>2018-09-01T12:42:00-04:00</updated>
     <id>tag:martinfowler.com,2018-09-01:photostream-117</id>
     <content type="html">
@@ -397,7 +397,7 @@
 
   <entry>
     <title>Most people will be disappointed by the second edition of Refactoring</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#most-people-will-be-disappointed-by-the-second-edition"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#most-people-will-be-disappointed-by-the-second-edition" />
     <updated>2018-08-30T12:03:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-30:Most-people-will-be-disappointed-by-the-second-edition-of-Refactoring</id>
     <content type="html">
@@ -414,7 +414,7 @@
 
   <entry>
     <title>Completing the extraction of a data-rich service</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step8.PointNewServiceToTheNewDatabase"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step8.PointNewServiceToTheNewDatabase" />
     <updated>2018-08-30T11:26:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-30:Completing-the-extraction-of-a-data-rich-service</id>
     <content type="html">
@@ -430,7 +430,7 @@
 
   <entry>
     <title>Refactoring 2nd Edition rough cut available</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#rough-cut-available-on-safari"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#rough-cut-available-on-safari" />
     <updated>2018-08-29T10:03:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-29:Refactoring-2nd-Edition-rough-cut-available</id>
     <content type="html">
@@ -445,10 +445,10 @@
 
   <entry>
     <title>Steps 6 &amp; 7 of extracting a data-rich service</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step6.CreateTheDatabaseForTheNewService"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step6.CreateTheDatabaseForTheNewService" />
     <updated>2018-08-29T07:51:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-29:Steps-6---7-of-extracting-a-data-rich-service</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step6.CreateTheDatabaseForTheNewService'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -462,10 +462,10 @@
 
   <entry>
     <title>Step 5 of extracting a data-rich service</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step5.PointClientsToTheNewService"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step5.PointClientsToTheNewService" />
     <updated>2018-08-28T15:09:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-28:Step-5-of-extracting-a-data-rich-service</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step5.PointClientsToTheNewService'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -479,10 +479,10 @@
 
   <entry>
     <title>Step 4 of extracting a data-rich service</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step4.BuildNewServicePointingToTablesInMonolithicDatabase"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step4.BuildNewServicePointingToTablesInMonolithicDatabase" />
     <updated>2018-08-27T11:26:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-27:Step-4-of-extracting-a-data-rich-service</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step4.BuildNewServicePointingToTablesInMonolithicDatabase'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -495,7 +495,7 @@
 
   <entry>
     <title>Agile Australia Keynote: State of Agile in 2018</title>
-    <link href="https://martinfowler.com/articles/agile-aus-2018.html"/>
+    <link href="https://martinfowler.com/articles/agile-aus-2018.html" />
     <updated>2018-08-27T11:17:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-27:Agile-Australia-Keynote--State-of-Agile-in-2018</id>
     <content type="html">
@@ -519,10 +519,10 @@
 
   <entry>
     <title>Refactoring 2nd Ed: Composing the Print Book</title>
-    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#composing-the-print-book"/>
+    <link href="https://martinfowler.com/articles/refactoring-2nd-ed.html#composing-the-print-book" />
     <updated>2018-08-24T12:48:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-24:Refactoring-2nd-Ed--Composing-the-Print-Book</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img floating'&gt;&lt;a href = 'https://martinfowler.com/articles/refactoring-2nd-ed.html#composing-the-print-book'&gt;&lt;img src = 'https://martinfowler.com/books/refact2.jpg' width = '150'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -539,10 +539,10 @@
 
   <entry>
     <title>Step 2 of extracting a data-rich service</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step2.CreateALogicalSeparationForTheLogicOfTheNewServiceInTheMonolith"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step2.CreateALogicalSeparationForTheLogicOfTheNewServiceInTheMonolith" />
     <updated>2018-08-24T09:05:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-24:Step-2-of-extracting-a-data-rich-service</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step2.CreateALogicalSeparationForTheLogicOfTheNewServiceInTheMonolith'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -555,10 +555,10 @@
 
   <entry>
     <title>Step 3 of extracting a data-rich service</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step3.CreateNewTablesToSupportTheLogicOfTheNewServiceInTheMonolith"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html#Step3.CreateNewTablesToSupportTheLogicOfTheNewServiceInTheMonolith" />
     <updated>2018-08-24T09:05:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-24:Step-3-of-extracting-a-data-rich-service</id>
-    <category term="skip-home-page"/>
+    <category term="skip-home-page" />
     <content type="html">
       &lt;div class = 'img'&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html#Step3.CreateNewTablesToSupportTheLogicOfTheNewServiceInTheMonolith'&gt;&lt;img src = 'https://martinfowler.com/articles/extract-data-rich-service/card.png' width = '400'&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
 
@@ -571,7 +571,7 @@
 
   <entry>
     <title>How to extract a data-rich service from a monolith</title>
-    <link href="https://martinfowler.com/articles/extract-data-rich-service.html"/>
+    <link href="https://martinfowler.com/articles/extract-data-rich-service.html" />
     <updated>2018-08-23T09:13:00-04:00</updated>
     <id>tag:martinfowler.com,2018-08-23:How-to-extract-a-data-rich-service-from-a-monolith</id>
     <content type="html">
@@ -591,5 +591,4 @@
       &lt;p&gt;&lt;a href = 'https://martinfowler.com/articles/extract-data-rich-service.html'&gt;more&#x2026;&lt;/a&gt;&lt;/p&gt;
     </content>
   </entry>
-
 </feed>

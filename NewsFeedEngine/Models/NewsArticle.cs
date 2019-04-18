@@ -21,6 +21,7 @@ namespace NewsFeedEngine.Models
         public string Picture { get; set; }
         public string Url { get; set; }
         public Nullable<int> CategoryId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     
         public virtual NewsCategory NewsCategory { get; set; }
         public virtual NewsProvider NewsProvider { get; set; }
