@@ -110,7 +110,6 @@
           <Property Name="NewsFeedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProviderId" Type="int" />
           <Property Name="RssUrl" Type="varchar(max)" />
-          <Property Name="Image" Type="varchar(max)" />
           <Property Name="Active" Type="bit" />
           <Property Name="CreatedDate" Type="date" />
           <Property Name="CategoryId" Type="int" />
@@ -570,7 +569,6 @@
           <Property Name="NewsFeedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProviderId" Type="Int32" />
           <Property Name="RssUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="0" />
           <Property Name="CategoryId" Type="Int32" />
@@ -809,7 +807,6 @@
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="RssUrl" ColumnName="RssUrl" />
                 <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
                 <ScalarProperty Name="NewsFeedId" ColumnName="NewsFeedId" />

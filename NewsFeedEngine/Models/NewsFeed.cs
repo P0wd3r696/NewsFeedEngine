@@ -17,7 +17,6 @@ namespace NewsFeedEngine.Models
         public int NewsFeedId { get; set; }
         public Nullable<int> ProviderId { get; set; }
         public string RssUrl { get; set; }
-        public string Image { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CategoryId { get; set; }

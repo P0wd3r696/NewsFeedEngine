@@ -2,6 +2,7 @@
 using NewsFeedEngine.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -17,15 +18,28 @@ namespace NewsFeedEngine.Models
         public void SaveToDb(IEnumerable<NewsArticle> rssFeed, string rssData, int? categoryId)
         {
             foreach (var rss in rssFeed)
-                if (!_context.NewsArticles.Any(x => x.Title.Trim() == rss.Title.Trim()))
+            {
+                var splittedText = rss
+                    .Title
+                    .Split('|');
+                //if (splittedText.Length > 1)
+                //{
+                //    var splittedTitle = splittedText[1];
+                //}
+                //if (!_context.NewsArticles.Any(x => (x.Title.Trim() == rss.Title.Trim()) || (x.Title.Trim() == splittedText[1].Trim())
+                //))
+                //{
+                var text = EncodeText(rss.Title);
+                rss.Summary = EncodeText(rss.Summary);
+                if (rss.Picture == null) rss.Picture = _pictureHandler.GetPictures(rssData, StaticData.RssItem, StaticData.RssEnclosure, rss);
+                var splittedRssTitle = text.Split('|');
+                if (splittedRssTitle.Length == 1)
                 {
-                    var text = EncodeText(rss.Title);
-                    rss.Summary = EncodeText(rss.Summary);
-                    if (rss.Picture == null) rss.Picture = _pictureHandler.GetPictures(rssData, StaticData.RssItem, StaticData.RssEnclosure, rss);
-                    var splittedRssTitle = text.Split('|');
-                    if (splittedRssTitle.Length == 1)
+                    var splittedTitle = splittedRssTitle[0];
+                    if (!_context.NewsArticles.Any(x =>
+                        (x.Title.Trim() == rss.Title.Trim()) || (x.Title.Trim() == splittedTitle.Trim())
+                    ))
                     {
-                        var splittedTitle = splittedRssTitle[0];
                         if (rss.Summary == string.Empty) continue;
                         try
                         {
@@ -33,25 +47,21 @@ namespace NewsFeedEngine.Models
                             {
                                 var doc = new HtmlDocument();
                                 doc.LoadHtml(rss.Summary);
-                                rss.Summary = EncodeText(doc.DocumentNode.SelectNodes("//p").FirstOrDefault()?.InnerText);
-                                //rss.Picture = EncodeText(doc.DocumentNode.ChildNodes["p"]?.ChildNodes["a"].Attributes["src"].Value);
-                                //rss.Picture = EncodeText(doc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()
-                                //    ?.Attributes[0].Value);
+                                rss.Summary = EncodeText(doc.DocumentNode.SelectNodes("//p").FirstOrDefault()
+                                    ?.InnerText);
                             }
                             else if (rss.Summary.Contains("<p>") || rss.Summary.Contains("<a href"))
                             {
                                 var doc = new HtmlDocument();
                                 doc.LoadHtml(rss.Summary);
-                                rss.Summary = EncodeText(doc.DocumentNode.SelectNodes("//p").FirstOrDefault()?.InnerText);
-                                //rss.Picture = doc.DocumentNode.ChildNodes["p"].ChildNodes["a"].Attributes["src"].Value;
-                                //rss.Picture = EncodeText(doc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()
-                                //?.Attributes["src"].Value);
+                                rss.Summary = EncodeText(doc.DocumentNode.SelectNodes("//p").FirstOrDefault()
+                                    ?.InnerText);
                             }
 
                             if (_context.NewsArticles.Any(x => !x.Title.Contains(splittedTitle)))
                             {
-                                //rss.Picture =null;
-                                rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
+                                rss.ProviderId = _context.NewsProviders
+                                    .FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                     .ProviderId;
                                 rss.CategoryId = categoryId;
                                 rss.Title = EncodeText(splittedRssTitle[0].Trim());
@@ -59,6 +69,7 @@ namespace NewsFeedEngine.Models
                                 _context.NewsArticles.Add(rss);
                                 _context.SaveChanges();
                             }
+
                             Console.WriteLine($"Title: {rss.Title}");
                         }
                         catch (Exception e)
@@ -66,11 +77,17 @@ namespace NewsFeedEngine.Models
                             Console.Write(e.Message + " An error has occured.");
                         }
                     }
-                    else
+                }
+                else
+                {
+                    var splittedTitle = splittedRssTitle[1];
+                    if (!_context.NewsArticles.Any(x =>
+                        (x.Title.Trim() == rss.Title.Trim()) || (x.Title.Trim() == splittedTitle.Trim())))
                     {
                         try
                         {
-                            rss.ProviderId = _context.NewsProviders.FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
+                            rss.ProviderId = _context.NewsProviders
+                                .FirstOrDefault(x => rss.Url.Contains(x.Name.Replace(" ", "")))?
                                 .ProviderId;
                             rss.CategoryId = categoryId;
                             rss.Title = EncodeText(splittedRssTitle[1].Trim());
@@ -84,6 +101,8 @@ namespace NewsFeedEngine.Models
                         }
                     }
                 }
+                //}
+            }
         }
 
         private string ChangeTextToHtml(string rssData)
@@ -100,20 +119,32 @@ namespace NewsFeedEngine.Models
 
         public void GetRssFeed(string rssData, int? categoryId)
         {
+            DateTime date = new DateTime();
             var xml = XDocument.Parse(rssData);
+            try
+            {
+                var rssFeedData = xml.Descendants("item")
+                               .Select(x => new NewsArticle
+                               {
 
-            var rssFeedData = xml.Descendants("item")
-                .Select(x => new NewsArticle
-                {
-                    Title = (string)x.Element("title"),
-                    Url = (string)x.Element("link"),
-                    Summary = (string)x.Element("description"),
-                    Picture = (string)x.Element("image")?.Element("url"),
-                    CreatedDate = (DateTime)x.Element("pubDate")
-                });
+                                   Title = (string)x.Element("title"),
+                                   Url = (string)x.Element("link"),
+                                   Summary = (string)x.Element("description"),
+                                   Picture = (string)x.Element("image")?.Element("url"),
+                                   //CreatedDate = (string)x.Element("pubDate") 
+                                   CreatedDate = !DateTime.TryParse((string)x.Element("pubDate"), CultureInfo.InvariantCulture, DateTimeStyles.None, out date) ? DateTime.Now : date
+                               });
+                SaveToDb(rssFeedData, rssData, categoryId);
+                Console.WriteLine("End!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
-            SaveToDb(rssFeedData, rssData, categoryId);
-            Console.WriteLine("End!");
+
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace NewsFeedEngine
         private static void Main(string[] args)
         {
             GetRssFeed();
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         public static bool IsRssFeed(string rssData)
