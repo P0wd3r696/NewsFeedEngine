@@ -10,23 +10,17 @@
 namespace NewsFeedEngine.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NewsArticle
+    public partial class selectTop8Articles_Result
     {
         public int ArticleId { get; set; }
         public string Title { get; set; }
         public string Summary { get; set; }
-        public Nullable<int> ProviderId { get; set; }
+        public string Name { get; set; }
         public string Picture { get; set; }
         public string Url { get; set; }
-        public Nullable<int> CategoryId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<bool> Active { get; set; }
-        public string SEOURL { get; set; }
-        public Nullable<int> VisitCount { get; set; }
-    
-        public virtual NewsCategory NewsCategory { get; set; }
-        public virtual NewsProvider NewsProvider { get; set; }
+        public string CategoryName { get; set; }
     }
 }

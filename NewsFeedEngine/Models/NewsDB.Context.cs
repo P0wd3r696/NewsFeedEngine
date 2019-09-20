@@ -162,7 +162,7 @@ namespace NewsFeedEngine.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertNewsCategory", nameParameter, parentIdParameter);
         }
     
-        public virtual int insertNewsFeed(Nullable<int> providerId, string rssUrl, Nullable<int> categoryId, string image)
+        public virtual int insertNewsFeed(Nullable<int> providerId, string rssUrl, Nullable<int> categoryId)
         {
             var providerIdParameter = providerId.HasValue ?
                 new ObjectParameter("providerId", providerId) :
@@ -176,11 +176,7 @@ namespace NewsFeedEngine.Models
                 new ObjectParameter("categoryId", categoryId) :
                 new ObjectParameter("categoryId", typeof(int));
     
-            var imageParameter = image != null ?
-                new ObjectParameter("image", image) :
-                new ObjectParameter("image", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertNewsFeed", providerIdParameter, rssUrlParameter, categoryIdParameter, imageParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertNewsFeed", providerIdParameter, rssUrlParameter, categoryIdParameter);
         }
     
         public virtual int insertNewsProvider(string name, string url, Nullable<int> countryId)
@@ -209,9 +205,24 @@ namespace NewsFeedEngine.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertParentCategory", parentnameParameter);
         }
     
+        public virtual ObjectResult<removeDuplicateNewsArticles_Result> removeDuplicateNewsArticles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<removeDuplicateNewsArticles_Result>("removeDuplicateNewsArticles");
+        }
+    
         public virtual ObjectResult<selectActiveNewsFeed_Result> selectActiveNewsFeed()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectActiveNewsFeed_Result>("selectActiveNewsFeed");
+        }
+    
+        public virtual ObjectResult<selectNewsArticles_Result> selectNewsArticles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectNewsArticles_Result>("selectNewsArticles");
+        }
+    
+        public virtual ObjectResult<selectTop8Articles_Result> selectTop8Articles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectTop8Articles_Result>("selectTop8Articles");
         }
     
         public virtual int updateCountry(Nullable<int> id, string name, string logo)
@@ -281,7 +292,7 @@ namespace NewsFeedEngine.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateNewsCategory", idParameter, nameParameter, parentIdParameter);
         }
     
-        public virtual int updateNewsFeed(Nullable<int> id, Nullable<int> providerId, string rssUrl, Nullable<int> categoryId, string image)
+        public virtual int updateNewsFeed(Nullable<int> id, Nullable<int> providerId, string rssUrl, Nullable<int> categoryId)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -299,11 +310,7 @@ namespace NewsFeedEngine.Models
                 new ObjectParameter("categoryId", categoryId) :
                 new ObjectParameter("categoryId", typeof(int));
     
-            var imageParameter = image != null ?
-                new ObjectParameter("image", image) :
-                new ObjectParameter("image", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateNewsFeed", idParameter, providerIdParameter, rssUrlParameter, categoryIdParameter, imageParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateNewsFeed", idParameter, providerIdParameter, rssUrlParameter, categoryIdParameter);
         }
     
         public virtual int updateNewsProvider(Nullable<int> id, string name, string url, Nullable<int> countryId)

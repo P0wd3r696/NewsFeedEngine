@@ -1,8 +1,9 @@
-﻿using HtmlAgilityPack;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using HtmlAgilityPack;
+using NewsFeedEngine.Utilities;
 
 namespace NewsFeedEngine.Models
 {
@@ -12,6 +13,7 @@ namespace NewsFeedEngine.Models
 
         public string GetPictures(string link, string parent, string child, NewsArticle newsArticle)
         {
+            var test = StaticData.GetImageSource(StaticData.CleanDescription(link));
             var xml = XDocument.Parse(link);
             IEnumerable<NewsArticle> rssFeedData;
             if (link.Contains("rss"))
@@ -21,7 +23,7 @@ namespace NewsFeedEngine.Models
                     rssFeedData = xml.Descendants(parent)
                         .Select(x => new NewsArticle
                         {
-                            Picture = (string)x.Element(child)?.Attribute("url")
+                            Picture = (string) x.Element(child)?.Attribute("url")
                         });
                     if (string.IsNullOrEmpty(rssFeedData.FirstOrDefault()?.Picture))
                     {
@@ -34,20 +36,23 @@ namespace NewsFeedEngine.Models
                     rssFeedData = xml.Descendants(parent)
                         .Select(x => new NewsArticle
                         {
-                            Picture = (string)x.Element(child)?.Element("url")
+                            Picture = (string) x.Element(child)?.Element("url")
                         });
                     _isValid = false;
                 }
+
                 return rssFeedData.FirstOrDefault()?.Picture;
             }
-            else if (link.Contains("atom"))
+
+            if (link.Contains("atom"))
             {
-                HtmlDocument htmlDoc = new HtmlDocument(); htmlDoc.LoadHtml(newsArticle.Summary);
+                var htmlDoc = new HtmlDocument();
+                htmlDoc.LoadHtml(newsArticle.Summary);
                 if (htmlDoc.DocumentNode.SelectNodes("//img[@src]") != null)
-                {
-                    newsArticle.Picture = htmlDoc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()?.Attributes[0].Value;
-                }
-                newsArticle.Summary = Regex.Replace(htmlDoc.DocumentNode.SelectNodes("//p")[0].InnerHtml, @"\t|\n|\r", "").Trim();
+                    newsArticle.Picture = htmlDoc.DocumentNode.SelectNodes("//img[@src]").FirstOrDefault()
+                        ?.Attributes[0].Value;
+                newsArticle.Summary =
+                    Regex.Replace(htmlDoc.DocumentNode.SelectNodes("//p")[0].InnerHtml, @"\t|\n|\r", "").Trim();
                 return newsArticle.Picture;
             }
 

@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationRevision>29</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -136,8 +136,17 @@
       <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PictureHandler.cs" />
+    <Compile Include="Models\removeDuplicateNewsArticles_Result.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RssHandler.cs" />
     <Compile Include="Models\selectActiveNewsFeed_Result.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\selectNewsArticles_Result.cs">
+      <DependentUpon>NewsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\selectTop8Articles_Result.cs">
       <DependentUpon>NewsDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -145,7 +154,9 @@
     <Compile Include="Utilities\StaticData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Models\NewsDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NewsDB.Designer.cs</LastGenOutput>
@@ -169,7 +180,9 @@
       <DependentUpon>NewsDB.edmx</DependentUpon>
       <LastGenOutput>NewsDB.cs</LastGenOutput>
     </Content>
-    <Content Include="XMLFile1.xml" />
+    <Content Include="XMLFile1.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,5 +1,5 @@
-﻿using System;
-using NewsFeedEngine.Models;
+﻿using NewsFeedEngine.Models;
+using System;
 using System.Linq;
 using System.Net;
 
@@ -7,7 +7,7 @@ namespace NewsFeedEngine
 {
     public class Program
     {
-        private static readonly NewsFeedEngine.Models.NewsDBEntities Context = new NewsDBEntities();
+        private static readonly NewsDBEntities Context = new NewsDBEntities();
 
         private static void Main(string[] args)
         {
@@ -31,22 +31,31 @@ namespace NewsFeedEngine
             AtomHandler atomHandler = new AtomHandler();
             foreach (var feed in Context.NewsFeeds.Where(x => x.Active == true).ToList())
             {
-                var rssLink = feed.RssUrl;
-                WebClient client = new WebClient();
-                if (rssLink != null)
+                try
                 {
-                    var rssData = client.DownloadString(rssLink);
-                    var isRssFeed = IsRssFeed(rssData);
-                    if (isRssFeed)
+                    var rssLink = feed.RssUrl;
+                    WebClient client = new WebClient();
+                    if (rssLink != null)
                     {
-                        rssHandler.GetRssFeed(rssData, feed.CategoryId);
-                    }
-                    else
-                    {
-                        atomHandler.GetRssFeed(rssData, feed.CategoryId);
+                        var rssData = client.DownloadString(rssLink);
+                        var isRssFeed = IsRssFeed(rssData);
+                        if (isRssFeed)
+                        {
+                            rssHandler.GetRssFeed(rssData, feed.CategoryId);
+                        }
+                        else
+                        {
+                            atomHandler.GetRssFeed(rssData, feed.CategoryId);
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
+
+            //Console.ReadLine();
         }
     }
 }

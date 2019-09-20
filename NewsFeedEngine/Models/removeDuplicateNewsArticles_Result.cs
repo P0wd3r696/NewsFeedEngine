@@ -10,9 +10,8 @@
 namespace NewsFeedEngine.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NewsArticle
+    public partial class removeDuplicateNewsArticles_Result
     {
         public int ArticleId { get; set; }
         public string Title { get; set; }
@@ -25,8 +24,5 @@ namespace NewsFeedEngine.Models
         public Nullable<bool> Active { get; set; }
         public string SEOURL { get; set; }
         public Nullable<int> VisitCount { get; set; }
-    
-        public virtual NewsCategory NewsCategory { get; set; }
-        public virtual NewsProvider NewsProvider { get; set; }
     }
 }
